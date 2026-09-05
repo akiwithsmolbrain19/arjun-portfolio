@@ -169,6 +169,11 @@ nav { animation-delay:.1s; }
 .proj li { font-size:14px; color:var(--dim); padding-left:18px; position:relative; margin-bottom:5px; }
 .proj li::before { content:'▸'; position:absolute; left:0; color:#888; }
 .seal { margin-top:14px; font-size:11px; letter-spacing:2px; color:#ccc; border:1px solid #333; display:inline-block; padding:9px 16px; }
+.seal a { color:inherit; text-decoration:none; }
+/* Whole-card click-through for linked projects */
+.proj-link { display:block; color:inherit; text-decoration:none; }
+.proj-link h3 .ext { color:#888; font-size:13px; }
+.proj-link:hover h3 { text-decoration:underline; text-underline-offset:4px; }
 
 /* ===== TIMELINE ===== */
 .tl { border-left:1px solid var(--line); margin-left:6px; position:relative; z-index:1; }
