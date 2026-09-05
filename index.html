@@ -9,6 +9,45 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- FLOATING SIGILS LAYER -->
+<div class="sigil-field" aria-hidden="true">
+  <svg class="fsigil s1" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="48" stroke="url(#mg)" stroke-width="0.8" stroke-dasharray="12 5 3 5"/>
+    <polygon points="50,8 88,72 12,72" stroke="url(#mg)" stroke-width="0.6"/>
+    <polygon points="50,92 12,28 88,28" stroke="url(#mg)" stroke-width="0.6"/>
+    <circle cx="50" cy="50" r="22" stroke="#fff" stroke-width="0.5" stroke-dasharray="4 3"/>
+    <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5f5f5"/><stop offset=".5" stop-color="#6a6a6a"/><stop offset="1" stop-color="#e8e8e8"/>
+    </linearGradient></defs>
+  </svg>
+  <svg class="fsigil s2" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="48" stroke="url(#mg2)" stroke-width="0.7" stroke-dasharray="2 5"/>
+    <rect x="22" y="22" width="56" height="56" stroke="url(#mg2)" stroke-width="0.6" transform="rotate(45 50 50)"/>
+    <circle cx="50" cy="50" r="14" stroke="#fff" stroke-width="0.6"/>
+    <defs><linearGradient id="mg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset0" stop-color="#fff"/><stop offset=".5" stop-color="#555"/><stop offset="1" stop-color="#ddd"/>
+    </linearGradient></defs>
+  </svg>
+  <svg class="fsigil s3" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50"="47" stroke="url(#mg3)" stroke-width="0.6"/>
+    <polygon points="50,12 90,50 50,90 10,50" stroke="url(#mg3)" stroke-width="0.6"/>
+    <polygon points="50,32 68,50 50,68 32,50" stroke="#fff" stroke-width="0.6"/>
+    <defs><linearGradient id="mg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8e8e8"/><stop offset=".5" stop-color="#4a4a4a"/><stop offset="1" stop-color="#fff"/>
+    </linearGradient></defs>
+  </svg>
+  <svg class="fsigil s4" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="46" stroke="url(#mg4)" stroke-width="0.6" stroke-dasharray="8 4"/>
+    <circle cx="50" cy="50" r="30" stroke="#999" stroke-width="0.5"/>
+    <circle cx="50" cy="50" r="10" stroke="#fff" stroke-width="0.6"/>
+    <defs><linearGradient id="mg4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#777"/><stop offset="1" stop-color="#ccc"/>
+    </linearGradient></defs>
+  </svg>
+</div>
+
+<!-- SECTION SIGILS (add one inside each section, after <div class="container">) -->
+
 
 <canvas id="matrix"></canvas>
 <div class="bg-grid"></div>
