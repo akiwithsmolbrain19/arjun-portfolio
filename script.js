@@ -33,7 +33,7 @@ try {
   function tick() {
     var d = new Date();
     function p(n) { return (n < 10 ? '0' : '') + n; }
-    el.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds);
+    el.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
   }
   tick(); setInterval(tick, 1000);
 })();
