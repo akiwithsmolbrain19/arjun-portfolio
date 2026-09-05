@@ -6,8 +6,11 @@ window.scrollTo(0, 0);
 window.addEventListener('load', function () {
   window.scrollTo(0, 0);
 });
-document.documentElement.classList.add('js');
+window.addEventListener('beforeunload', function () {
+  window.scrollTo(0, 0);
+});
 
+document.documentElement.classList.add('js');
 
 /* MATRIX RAIN */
 var canvas = document.getElementById('matrix');
@@ -56,13 +59,13 @@ if (typedEl) {
     if (ci < lines[li].length) { ci++; setTimeout(type, 22); }
     else { li++; ci = 0; setTimeout(type, 320); }
   }
-  type();
+  setTimeout(type, 900);
 }
 
 /* MARQUEE */
 var track = document.getElementById('marquee');
 if (track) {
-  var items = ['SIEM MONITORING','THREAT DETECTION','VAPT','INCIDENT RESPONSE','MITRE ATT&CK','WIRESHARK','WAZUH','KALI LINUX','BURP SUITE','PYTHON','CTF PLAYER','TRYHACKME'];
+  var items = ['SIEM MONITORING','THREAT DETECTION','VAPT','INCIDENT RESPONSE','MITRE ATT&CK','WIRESHARK','WAZU','KALI LINUX','BURP SUITE','PYTHON','CTF PLAYER','TRYHACKME'];
   track.innerHTML = (items.map(function (i) { return '<span>◆</span><b>' + i + '</b>'; }).join('')).repeat(2);
 }
 
@@ -77,8 +80,24 @@ if ('IntersectionObserver' in window) {
 } else {
   document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
 }
-/* ENSURE PAGE ALWAYS LOADS FROM TOP, THEN PLAY INTRO */
-window.addEventListener('beforeunload', function () {
-  window.scrollTo(0, 0);
-});
 
+/* SIGIL PARALLAX ON SCROLL */
+window.addEventListener('scroll', function () {
+  var y = window.scrollY;
+  var s1 = document.querySelector('.s1');
+  var s2 = document.querySelector('.s2');
+  if (s1) s1.style.marginTop = (y * 0.08) + 'px';
+  if (s2) s2.style.marginTop = (y * -0.06) + 'px';
+}, { passive: true });
+
+/* RANDOM GLITCH FLASH ON NAME */
+var nameEl = document.querySelector('.name');
+setInterval(function () {
+  if (!nameEl) return;
+  nameEl.style.textShadow = '2px 0 rgba(158,255,240,.6), -2px 0 rgba(255,100,100,.4)';
+  setTimeout(function () { nameEl.style.textShadow = ''; }, 90);
+  setTimeout(function () {
+    nameEl.style.textShadow = '-3px 0 rgba(158,255,240,.5), 3px 0 rgba(255,100,100,.5)';
+    setTimeout(function () { nameEl.style.textShadow = ''; }, 70);
+  }, 140);
+}, 6000);
