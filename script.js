@@ -101,3 +101,31 @@ setInterval(function () {
     setTimeout(function () { nameEl.style.textShadow = ''; }, 70);
   }, 140);
 }, 6000);
+/* MOBILE BURGER MENU */
+var burger = document.getElementById('burger');
+var navmenu = document.getElementById('navmenu');
+if (burger && navmenu) {
+  burger.addEventListener('click', function () {
+    burger.classList.toggle('open');
+    navmenu.classList.toggle('open');
+  });
+  navmenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      burger.classList.remove('open');
+      navmenu.classList.remove('open');
+    });
+  });
+}
+
+/* disable heavy parallax on touch devices */
+/* SIGIL PARALLAX ON SCROLL (desktop only) */
+if (!('ontouchstart' in window)) {
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    var s1 = document.querySelector('.s1');
+    var s2 = document.querySelector('.s2');
+    if (s1) s1.style.marginTop = (y * 0.08) + 'px';
+    if (s2) s2.style.marginTop = (y * -0.06) + 'px';
+  }, { passive: true });
+}
+
