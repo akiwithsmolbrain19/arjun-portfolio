@@ -22,7 +22,8 @@ body {
 a { color:inherit; }
 ::selection { background:var(--accent); color:#fff; }
 .mono { font-family:var(--font-m); }
-.display { font-family:var(--font-d); font-weight:900; }
+.display { font-family:var(--font-d); font-weight:900; font-stretch:118%; }
+.wordmark { font-family:var(--font-d); font-weight:800; font-stretch:118%; font-size:15px; letter-spacing:2px; }
 
 /* paper grain */
 .grain {
@@ -53,7 +54,6 @@ nav {
   padding:20px clamp(20px,5vw,64px);
   mix-blend-mode:normal;
 }
-.wordmark { font-family:var(--font-d); font-weight:800; font-size:15px; letter-spacing:2px; }
 .wordmark sup { font-size:8px; }
 .nav-right { display:flex; align-items:center; gap:18px; }
 .nav-meta { font-size:10px; letter-spacing:2px; color:var(--grey); }
@@ -80,7 +80,7 @@ nav {
 }
 .overlay.open { clip-path:inset(0 0 0% 0); visibility:visible; }
 .overlay-inner a {
-  display:block; font-family:var(--font-d); font-weight:800;
+  display:block; font-family:var(--font-d); font-weight:800; font-stretch:115%;
   font-size:clamp(38px,7vw,84px); line-height:1.12; letter-spacing:1px;
   color:var(--paper); opacity:.92; transition:opacity .25s, transform .35s;
 }
@@ -130,7 +130,7 @@ nav {
 }
 .skill-row:hover { background:var(--sheet); }
 .skill-row .idx { font-size:11px; color:var(--accent); }
-.skill-row h3 { font-family:var(--font-d); font-weight:800; font-size:clamp(20px,3vw,34px); letter-spacing:1px; }
+.skill-row h3 { font-family:var(--font-d); font-weight:800; font-stretch:112%; font-size:clamp(20px,3vw,34px); letter-spacing:1px; }
 .skill-row p { font-size:14px; color:var(--ink-soft); }
 
 /* projects — each its own scene */
@@ -138,7 +138,7 @@ nav {
 .work:last-child { border-bottom:1px solid var(--line); }
 .work-no { font-size:10px; letter-spacing:3px; color:var(--grey); margin-bottom:14px; }
 .work h3 {
-  font-family:var(--font-d); font-weight:900; text-transform:uppercase;
+  font-family:var(--font-d); font-weight:900; font-stretch:112%; text-transform:uppercase;
   font-size:clamp(34px,6vw,88px); line-height:.95; letter-spacing:0;
   transition:transform .35s cubic-bezier(.22,1,.36,1);
 }
@@ -178,7 +178,7 @@ nav {
   display:grid; grid-template-columns:1.2fr 1fr; gap:24px;
   padding:30px 0; border-bottom:1px solid var(--line); align-items:baseline;
 }
-.row h3 { font-family:var(--font-d); font-weight:800; font-size:clamp(18px,2.6vw,30px); letter-spacing:.5px; }
+.row h3 { font-family:var(--font-d); font-weight:800; font-stretch:110%; font-size:clamp(18px,2.6vw,30px); letter-spacing:.5px; }
 .row .meta { font-size:10px; letter-spacing:2px; color:var(--grey); margin-top:8px; }
 .row p:last-child { font-size:14px; color:var(--ink-soft); }
 .inline-link { border-bottom:1px solid var(--accent); }
