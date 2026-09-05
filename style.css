@@ -147,3 +147,32 @@ html.js .reveal.visible { opacity:1; transform:none; }
 .clink:hover { background:#fff; color:#000; border-color:#fff; }
 
 footer { border-top:1px solid var(--line); padding:28px 0; text-align:center; font-size:10px; letter-spacing:2px; color:var(--faint); }
+/* ===== PAGE LOAD-IN ANIMATION ===== */
+.hero .tagline,
+.hero .name,
+.hero .hero-sub,
+.hero .cta,
+nav {
+  opacity: 0;
+  animation: loadIn .9s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+nav { animation-delay: .1s; }
+.hero .tagline { animation-delay: .3s; }
+.hero .name    { animation-delay: .5s; }
+.hero .hero-sub{ animation-delay: .8s; }
+.hero .cta     { animation-delay: 1.05s; }
+
+@keyframes loadIn {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* name gets a special wider reveal */
+.hero .name {
+  animation-name: nameIn;
+}
+@keyframes nameIn {
+  from { opacity: 0; transform: translateY(40px); letter-spacing: 8px; }
+  to   { opacity: 1; transform: translateY(0);   letter-spacing: -2; }
+}
