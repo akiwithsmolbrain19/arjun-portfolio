@@ -1,25 +1,4 @@
-/* ===== BOOT — bulletproof, guaranteed exit ===== */
-function finishBoot() {
-  var b = document.getElementById('boot');
-  if (b) b.classList.add('done');
-  document.body.style.overflow = '';
-}
 
-// Path 1: dismiss after messages
-var bootMsgs = ['ESTABLISHING SECURE CONNECTION...', 'LOADING SIGIL MATRIX... [OK]', 'DECRYPTING PROFILE... [OK]', 'ACCESS GRANTED'];
-var bmi = 0;
-var bootInt = setInterval(function () {
-  bmi++;
-  var t = document.getElementById('bootText');
-  if (bmi < bootMsgs.length && t) { t.textContent = bootMsgs[bmi]; }
-  else { clearInterval(bootInt); finishBoot(); }
-}, 650);
-
-// Path 2: hard safety net — dismiss at 3s no matter what
-setTimeout(finishBoot, 3000);
-
-// Path 3: dismiss on click (user escape hatch)
-document.getElementById('boot').addEventListener('click', finishBoot);
 
 /* ===== CUSTOM CURSOR ===== */
 var cDot = document.getElementById('cDot');
