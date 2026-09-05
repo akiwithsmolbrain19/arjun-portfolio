@@ -58,7 +58,7 @@ if (canvas) {
     for (var i = 0; i < cols; i++) {
       var ch = glyphs[Math.floor(Math.random() * glyphs.length)];
       ctx.fillStyle = light ? 'rgba(120,120,120,0.8)'
-        : (Math.random() > 0.97 ? '#ffffff' : 'rgba(190,190,190,0.8)');
+        : (Math.random() > 0.985 ? '#B8E7FF' : (Math.random() > 0.96 ? '#ffffff' : 'rgba(174,184,194,0.75)'));
       ctx.fillText(ch, i * 18, drops[i] * 18);
       if (drops[i] * 18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
       drops[i]++;
@@ -117,17 +117,35 @@ if (!isTouch) {
   }, { passive: true });
 }
 
-/* ===== RANDOM GLITCH FLASH ON NAME ===== */
+/* ===== RANDOM GLITCH FLASH ON NAME (rare, icy) ===== */
 var nameEl = document.querySelector('.name');
 setInterval(function () {
-  if (!nameEl) return;
-  nameEl.style.textShadow = '2px 0 rgba(158,255,240,.6), -2px 0 rgba(255,100,100,.4)';
+  if (!nameEl || document.hidden) return;
+  nameEl.style.textShadow = '2px 0 rgba(184,231,255,.55), -2px 0 rgba(255,255,255,.25)';
   setTimeout(function () { nameEl.style.textShadow = ''; }, 90);
-  setTimeout(function () {
-    nameEl.style.textShadow = '-3px 0 rgba(158,255,240,.5), 3px 0 rgba(255,100,100,.5)';
-    setTimeout(function () { nameEl.style.textShadow = ''; }, 70);
-  }, 140);
-}, 6000);
+}, 9000);
+
+/* ===== SCROLL PROGRESS + ACTIVE NAV ===== */
+(function () {
+  var nav = document.querySelector('nav');
+  var bar = document.createElement('div');
+  bar.id = 'scroll-progress';
+  if (nav) nav.appendChild(bar);
+  var links = Array.prototype.slice.call(document.querySelectorAll('#navmenu a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    if (bar) bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    var cur = null;
+    secs.forEach(function (s, i) {
+      if (s && s.getBoundingClientRect().top < window.innerHeight * 0.4) cur = i;
+    });
+    links.forEach(function (a, i) { a.classList.toggle('active', i === cur); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
 
 /* ===== FAKE SOC TERMINAL (all output canned lab data — no live systems) ===== */
 (function () {
