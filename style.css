@@ -5,6 +5,46 @@
   --txt:#d6d6d6; --dim:#8a8a8a; --faint:#4a4a4a;
 }
 
+/* ===== LIGHT THEME ===== */
+[data-theme="light"] {
+  --bg:#f2f2f2; --panel:#ffffff; --line:#d9d9d9;
+  --txt:#1c1c1c; --dim:#555555; --faint:#a0a0a0;
+}
+[data-theme="light"] nav { background:rgba(242,242,242,.85); }
+[data-theme="light"] .logo, [data-theme="light"] .proj h3,
+[data-theme="light"] .card h3, [data-theme="light"] .tl-item h3 { color:#111; }
+[data-theme="light"] .name { color:#111; }
+[data-theme="light"] .name .thin {
+  background:linear-gradient(180deg,#111 0%,#555 45%,#999 60%,#222 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+[data-theme="light"] .sec-head h2, [data-theme="light"] .contact-big {
+  background:linear-gradient(180deg,#111 0%,#444 30%,#888 50%,#333 58%,#666 78%,#111 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+[data-theme="light"] .btn.solid { background:#111; color:#fff; border-color:#111; }
+[data-theme="light"] .btn.solid:hover { background:transparent; color:#111; }
+[data-theme="light"] .btn:hover { border-color:#111; color:#111; background:rgba(0,0,0,.05); box-shadow:0 0 24px rgba(0,0,0,.15); }
+[data-theme="light"] .clink { color:#333; border-color:#bbb; }
+[data-theme="light"] .clink:hover { background:#111; color:#fff; border-color:#111; }
+[data-theme="light"] .marquee-track b { color:#333; }
+[data-theme="light"] .proj:hover .tags span { color:#111; border-color:#999; }
+[data-theme="light"] ::selection { background:#111; color:#fff; }
+[data-theme="light"] #matrix { opacity:.05; }
+[data-theme="light"] .fsigil, [data-theme="light"] .sec-sigil { opacity:.05; }
+[data-theme="light"] .theme-btn { border-color:#bbb; color:#333; }
+
+/* theme toggle button */
+.theme-btn {
+  background:none; border:1px solid #333; color:#ccc;
+  font-family:'JetBrains Mono',monospace; font-size:13px;
+  width:36px; height:36px; cursor:pointer; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .3s;
+}
+.theme-btn:hover { border-color:#fff; box-shadow:0 0 12px rgba(255,255,255,.25); }
+.nav-actions { display:flex; align-items:center; gap:10px; }
+
 html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
 body {
   background:var(--bg); color:var(--txt);
@@ -174,6 +214,44 @@ nav { animation-delay:.1s; }
 .proj-link { display:block; color:inherit; text-decoration:none; }
 .proj-link h3 .ext { color:#888; font-size:13px; }
 .proj-link:hover h3 { text-decoration:underline; text-underline-offset:4px; }
+
+/* ===== TERMINAL ===== */
+.term {
+  border:1px solid var(--line); background:#030303;
+  position:relative; z-index:1;
+  font-family:'JetBrains Mono',monospace;
+}
+[data-theme="light"] .term { background:#101010; }
+.term-bar {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 16px; border-bottom:1px solid var(--line);
+}
+.term-bar i { width:11px; height:11px; border-radius:50%; background:#333; display:block; }
+.term-bar i:first-child { background:#555; }
+.term-bar span { margin-left:8px; font-size:11px; letter-spacing:2px; color:var(--dim); }
+.term-body {
+  padding:20px; height:340px; overflow-y:auto;
+  font-size:13px; line-height:1.8; color:#bdbdbd;
+}
+.term-body .p { color:#fff; }
+.term-body .dim { color:#666; }
+.term-body .ok { color:#7dd87d; }
+.term-body .warn { color:#e0b34e; }
+.term-body .bad { color:#e06c6c; }
+.term-input-row { display:flex; gap:8px; align-items:baseline; }
+.term-prompt { color:#fff; white-space:nowrap; }
+#term-input {
+  flex:1; background:none; border:none; outline:none;
+  font-family:inherit; font-size:13px; color:#fff; caret-color:#fff;
+}
+
+/* ===== THM BADGE ===== */
+.thm-row { display:flex; gap:24px; align-items:center; flex-wrap:wrap; position:relative; z-index:1; margin-top:26px; }
+.thm-row iframe { border:1px solid var(--line); background:var(--panel); max-width:100%; }
+.thm-link { font-size:12px; letter-spacing:2px; border:1px solid #2a2a2a; padding:14px 28px; color:#bbb; transition:all .3s; }
+.thm-link:hover { background:#fff; color:#000; border-color:#fff; }
+[data-theme="light"] .thm-link { color:#333; border-color:#bbb; }
+[data-theme="light"] .thm-link:hover { background:#111; color:#fff; border-color:#111; }
 
 /* ===== TIMELINE ===== */
 .tl { border-left:1px solid var(--line); margin-left:6px; position:relative; z-index:1; }
