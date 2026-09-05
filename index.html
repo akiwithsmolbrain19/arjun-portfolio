@@ -4,21 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARJUN P S // CYBERSECURITY</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-
-
-<div class="cursor-dot" id="cDot"></div>
-<div class="cursor-ring" id="cRing"></div>
 <canvas id="matrix"></canvas>
 <div class="bg-grid"></div>
 
 <nav>
-  <div class="container">
-    <div class="nav-logo"><b>APS</b>//SEC</div>
+  <div class="container nav-inner">
+    <div class="logo">APS<span>//SEC</span></div>
     <ul>
       <li><a href="#skills">SKILLS</a></li>
       <li><a href="#projects">PROJECTS</a></li>
@@ -30,28 +27,12 @@
 </nav>
 
 <header class="hero container">
-  <div class="sigil hero-sigil-1">
-    <svg viewBox="0 0 100 100" fill="none">
-      <circle cx="50 cy="50" r="49" stroke="#fff" stroke-width="0.6" stroke-dasharray="12 5 3 5"/>
-      <circle cx="50" cy="50" r="44" stroke="#999" stroke-width="0.4"/>
-      <polygon points="50,8 88,72 12,72" stroke="#fff" stroke-width="0.5"/>
-      <polygon points="50,92 12,28 88,28" stroke="#888" stroke-width="0.5"/>
-      <circle cx="50" cy="50" r="24" stroke="#fff" stroke-width="0.6" stroke-dasharray="4 3"/>
-    </svg>
-  </div>
-  <div class="sigil hero-sigil-2">
-    <svg viewBox="0 0 100 100" fill="none">
-      <circle cx="50" cy="50" r="48" stroke="#999" stroke-width="0.6" stroke-dasharray="2 4"/>
-      <polygon points="50,10 90,50 50,90 10,50" stroke="#ddd" stroke-width="0.6"/>
-      <circle cx="50" cy="50" r="14" stroke="#fff" stroke-width="0.7"/>
-    </svg>
-  </div>
-  <div class="hero-tag mono">SYS.BOOT — <em>ASPIRING CYBERSECURITY ANALYST</em> — THRISSUR, IN</div>
-  <h1><span class="glitch chrome" data-text="ARJUN">ARJUN</span><br>P&nbsp;S</h1>
-  <p class="hero-sub" id="typed"></p>
-  <div class="hero-cta">
-    <a class="btn solid" href="#contact"><span>INITIATE CONTACT</span></a>
-    <a class="btn" href="#projects"><span>VIEW PROJECTS ↘</span></a>
+  <p class="tagline mono">// ASPIRING CYBERSECURITY ANALYST — THRISSUR, IN</p>
+  <h1 class="name">ARJUN<span class="thin">P S</span></h1>
+  <p class="hero-sub mono" id="typed"></p>
+  <div class="cta">
+    <a class="btn solid" href="#contact">INITIATE CONTACT</a>
+    <a class="btn" href="#">VIEW PROJECTS ↘</a>
   </div>
 </header>
 
@@ -59,72 +40,72 @@
 
 <section id="skills">
   <div class="container">
-    <div class="sec-head reveal"><span class="sec-num">01</span><h2 class="chrome">CAPABILITIES</h2><div class="sec-line"></div></div>
-    <div class="skills reveal">
-      <div class="skill"><div class="idx">/SEC_01</div><h3>SECURITY ASSESSMENT</h3><p>VAPT · Vulnerability Assessment · Basic Pentesting · Website &amp; Wireless Attacks · Burp Suite · Kali Linux</p></div>
-      <div class="skill"><div class="idx">/SEC_02</div><h3>THREAT DETECTION</h3><p>Wazuh · Sysmon · Splunk · SIEM Monitoring · Incident Response · IOC Analysis · MITRE ATT&amp;CK</p></div>
-      <div class="skill"><div class="idx">/SEC_03</div><h3>NETWORK &amp; SYSTEMS</h3><p>Linux · Windows · Wireshark · tcpdump · CLI · Log Analysis</p></div>
-      <div class="skill"><div class="idx">/SEC_04</div><h3>PROGRAMMING</h3><p>Python · C/C++ · JavaScript · SQL</p></div>
+    <div class="sec-head reveal"><span class="num mono">01</span><h2>CAPABILITIES</h2><div class="rule"></div></div>
+    <div class="grid4 reveal">
+      <div class="card"><h3>/SEC_01 — SECURITY ASSESSMENT</h3><p>VAPT · Vulnerability Assessment · Basic Pentesting · Website &amp; Wireless Attacks · Burp Suite · Kali Linux</p></div>
+      <div class="card"><h3>/SEC_02 — THREAT DETECTION</h3><p>Wazuh · Sysmon · Splunk · SIEM Monitoring · Incident Response · IOC Analysis · MITRE ATT&amp;CK</p></div>
+      <div class="card"><h3>/SEC_03 — NETWORK &amp; SYSTEMS</h3><p>Linux · Windows · Wireshark · tcpdump · CLI · Log Analysis</p></div>
+     <div class="card"><h3>/SEC_04 — PROGRAMMING</h3><p>Python · C/C++ · JavaScript · SQL</p></div>
     </div>
   </div>
 </section>
 
 <section id="projects">
   <div class="container">
-    <div class="sec-head reveal"><span class="sec-num">02</span><h2 class="chrome">PROJECTS</h2><div class="sec-line"></div></div>
+    <div class="sec-head reveal"><span class="num mono">02</span><h2>PROJECTS</h2><div class="rule"></div></div>
 
-    <div class="proj reveal">
-      <div class="proj-top"><h3>⛨ SOC ANALYST HOME LAB</h3><span class="date">MAY 2026</span></div>
-      <div class="tags"><span class="tag">WAZUH</span><span class="tag">SYSMON</span><span class="tag">KALI LINUX</span<span class="tag">MITRE ATT&amp;CK</span></div>
+    <article class="proj reveal">
+      <div class="proj-top"><h3>SOC ANALYST HOME LAB</h3><span class="date mono">MAY 2026</span></div>
+      <div class="tags mono"><span>WAZUH</span><span>SYSMON</span><span>KALI LINUX</span><span>MITRE ATT&amp;CK</span></div>
       <ul>
         <li>Built a Windows-based SOC lab using Wazuh SIEM, Sysmon, and Kali Linux with centralized endpoint logging via Wazuh agents.</li>
         <li>Created detections for PowerShell abuse and brute-force activity mapped to MITRE ATT&amp;CK.</li>
-        <li>Performed alert triage, log analysis, and full incident investigations.</li>
+        <li> alert triage, log analysis, and full incident investigations.</li>
       </ul>
-    </div>
+    </article>
 
-    <div class="proj reveal">
-      <div class="proj-top"><h3>⚙ EMBEDDED RTOS PRIORITY INVERSION SIMULATOR</h3><span class="date">MAR 2026</span></div>
-      <div class="tags"><span class="tag">C</span><span class="tag">POSIX THREADS</span><span class="tag">WSL2</span></div>
+    <article class="proj reveal">
+      <div class="proj-top"><h3>EMBEDDED RTOS PRIORITY INVERSION SIMULATOR</h3><span class="date mono">MAR 2026</span></div>
+      <div class="tags mono"><span>C</span><span>POSIX THREADS</span><span>WSL2</span></div>
       <ul>
         <li>Engineered a C-based RTOS simulator implementing Priority Inheritance (PIP) and Priority Ceiling (PCP) protocols to resolve unbounded priority inversion.</li>
         <li>Reduced high-priority task latency from 758 ms → 405 ms (PIP) and 354 ms (PCP) while preventing deadlock.</li>
       </ul>
-    </div>
+    </article>
 
-    <div class="proj reveal">
-      <div class="proj-top"><h3>✦ SENTI-SIGN — SIGN LANGUAGE &amp; EMOTION TRANSLATOR</h3><span class="date">JUL 2025 – MAR 2026</span></div>
-      <div class="tags"><span class="tag">RESNET</span><span class="tag">BILSTM</span><span class="tag">FLAN-T5</span><span class="tag">TTS</span></div>
+    <article class="proj reveal">
+      <div class="proj-top"><h3>SENTI-SIGN — SIGN LANGUAGE &amp; EMOTION TRANSLATOR</h3><span class="date mono">JUL 2025 – MAR 2026</span></div>
+      <div class="tags mono"><span>RESNET</span><span>BILSTM</span><span>FLAN-T5</span><span>TTS</span></div>
       <ul>
         <li>Real-time webcam application for sign language translation and emotion recognition using ResNet, BiLSTM/MLP, FLAN-T5, and TTS output.</li>
       </ul>
-      <div class="patent-seal">PATENT PUBLISHED · APP NO. 202541127307 · IP INDIA · JAN 2026</div>
-    </div>
+      <p class="seal mono">★ PATENT PUBLISHED — APP NO. 202541127307 · IP INDIA · JAN 2026</p>
+    </article>
 
-    <div class="proj reveal">
-      <div class="proj-top"><h3>◈ AGRICULTURAL MONITORING ROVER</h3><span class="date">JAN – APR 2025</span></div>
-      <div class="tags"><span class="tag">EMBEDDED</span><span class="tag">GPS</span><span class="tag">SENSORS</span></div>
+    <article class="proj reveal">
+      <div class="proj-top"><h3>AGRICULTURAL MONITORING ROVER</h3><span class="date mono">JAN – APR 2025</span></div>
+      <div class="tags mono"><span>EMBEDDED</span><span>GPS</span><span>SENSORS</span></div>
       <ul>
         <li>Reduced manual field inspection time by 60% via automated sensor data collection.</li>
-        <li>92% obstacle detection accuracy (HC-SR04) · GPS tracking ±3 m · DHT11 environmental monitoring ±2°C.</li>
+        <li>92% obstacle detection accuracy (HC-SR04) · GPS tracking ±3 m · DHT11 monitoring ±2°C.</li>
       </ul>
-    </div>
+    </article>
   </div>
 </section>
 
 <section id="experience">
   <div class="container">
-    <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="chrome">EXPERIENCE // CTF</h2><div class="sec-line"></div></div>
+    <div class="sec-head reveal"><span class="num mono">03</span><h2>EXPERIENCE // CTF</h2><div class="rule"></div></div>
     <div class="tl reveal">
       <div class="tl-item">
-        <h3><span class="hl">z0d1ak CTF QUALIFIERS</span> — TEAM ASTRA</h3>
-        <div class="tl-meta">AUG 2026 · RANK #143 / 1,253</div>
+        <h3>z0d1ak CTF QUALIFIERS — TEAM ASTRA</h3>
+        <p class="meta mono">AUG 2026 · RANK #143 / 1,253</p>
         <p>Solved 8 challenges across Cryptography (5), Binary Exploitation, Forensics, and Miscellaneous.</p>
       </div>
       <div class="tl-item">
-        <h3><span class="hl">EMBEDDED SYSTEMS TRAINING</span> — KELTRON KNOWLEDGE CENTRE</h3>
-        <div class="tl-meta">JUL 2024</div>
-        <p>Trained in embedded systems, Arduino, and hardware sensors. Designed and verified system logic for 3 Proteus simulations.</p>
+        <h3>EMBEDDED SYSTEMS TRAINING — KELTRON</h3>
+        <p class="meta mono">JUL 2024</p>
+        <p>Trained in embedded systems, Arduino, and hardware sensors. Verified logic for 3 Proteus simulations.</p>
       </div>
     </div>
   </div>
@@ -132,44 +113,29 @@
 
 <section id="certs">
   <div class="container">
-    <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="chrome">EDUCATION // CERTS</h2><div class="sec-line"></div></div>
+    <div class="sec-head reveal"><span class="num mono">04</span><h2>EDUCATION // CERTS</h2><div class="rule"></div></div>
     <div class="tl reveal">
-      <div class="tl-item">
-        <h3><span class="hl">B.TECH — ELECTRONICS &amp; COMMUNICATION ENGINEERING</span></h3>
-        <div class="tl-meta">RSET KOCHI · 2022–2026 · CGPA 6.69/10</div>
-      </div>
-      <div class="tl-item">
-        <h3><span class="hl">GOOGLE CYBERSECURITY PROFESSIONAL CERT</span></h3>
-        <div class="tl-meta">FEB 2026</div>
-        <p>Python, Linux, SQL, SIEM tools, IDS, risk identification &amp; mitigation.</p>
-      </div>
-      <div class="tl-item">
-        <h3><span class="hl">CERTIFIED CYBER SECURITY ANALYST (CSA)</span> — ICT ACADEMY OF KERALA</h3>
-        <div class="tl-meta">IN PROGRESS · JUN–OCT 2026</div>
-        <p>SOC workflows, threat detection, incident response, ethical hacking, pentesting labs.</p>
-      </div>
-      <div class="tl-item">
-        <h3><span class="hl">TRYHACKME SOC LEVEL 1</span></h3>
-        <div class="tl-meta">IN PROGRESS</div>
-        <p>Alert triage, SIEM/EDR/SOAR, IOC analysis, cyber defence frameworks.</p>
-      </div>
+      <div class="tl-item"><h3>B.TECH — ELECTRONICS &amp; COMMUNICATION ENGINEERING</h3><p class="meta mono">RSET KOCHI · 2022–2026 · CGPA 6.69/10</p></div>
+      <div class="tl-item"><h3>GOOGLE CYBERSECURITY PROFESSIONAL CERTIFICATE</h3><p class="meta mono">FEB 2026</p><p>Python, Linux, SQL, SIEM tools, IDS, risk identification &amp; mitigation.</p></div>
+      <div class="tl"><h3>CERTIFIED CYBER SECURITY ANALYST (CSA) — ICT ACADEMY OF KERALA</h3><p class="meta mono">IN PROGRESS · JUN–OCT 2026</p><p>SOC workflows, threat detection, incident response, ethical hacking, pentesting labs.</p></div>
+      <div class="tl-item"><h3>TRYHACKME SOC LEVEL 1</h3><p class="meta mono">IN PROGRESS</p><p>Alert triage, SIEM/EDR/SOAR, IOC analysis, cyber defence frameworks.</p></div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="container contact-wrap reveal">
-    <div class="hero-tag mono">// OPEN TO SOC ANALYST &amp; ENTRY-LEVEL CYBERSECURITY ROLES</div>
-    <h2 class="contact-big chrome">LET'S CONNECT</h2>
-    <div class="contact-links">
-      <a class="clink" href="mailto:peringhatarjun@gmail.com">EMAIL ↗</a>
-      <a class="clink" href="https://linkedin.com/in/p-s-arjun" target="_blank">LINKEDIN ↗</a>
-      <a class="clink" href="tel:+918078892743">PHONE ↗</a>
+    <p class="tagline mono">// OPEN TO SOC ANALYST &amp; ENTRY-LEVEL CYBERSECURITY ROLES</p>
+    <h2 class="contact-big">LET'S CONNECT</h2>
+    <div class="links">
+      <a class="clink mono" href="mailto:peringhatarjun@gmail.com">EMAIL ↗</a>
+      <a class="clink mono" href="https://linkedin.com/in/p-s-arjun" target="_blank">LINKEDIN ↗</a>
+       class="clink mono" href="tel:+918078892743">PHONE ↗</a>
     </div>
   </div>
 </section>
 
-<footer>© 2026 ARJUN P S — THRISSUR, INDIA — SECURE BY DESIGN</footer>
+<footer class="mono© 2026 ARJUN P S — THRISSUR, INDIA — SECURE BY DESIGN</footer>
 
 <script src="script.js"></script>
 </body>
