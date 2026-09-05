@@ -12,7 +12,9 @@ window.addEventListener('beforeunload', function () {
 
 document.documentElement.classList.add('js');
 
-/* MATRIX RAIN */
+var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+/* ===== MATRIX RAIN ===== */
 var canvas = document.getElementById('matrix');
 if (canvas) {
   var ctx = canvas.getContext('2d');
@@ -41,11 +43,11 @@ if (canvas) {
   }, 70);
 }
 
-/* TYPEWRITER */
+/* ===== TYPEWRITER ===== */
 var typedEl = document.getElementById('typed');
 if (typedEl) {
   var lines = [
-    '> whoami — Arjun P S, ECE Graduate turned Cybersecurity Analyst',
+    '> whoami — Arjun P S, ECE Graduate turnedsecurity Analyst',
     '> skills — SIEM · Threat Detection · VAPT · Network Analysis',
     '> status — Open to SOC / Security Analyst roles_'
   ];
@@ -62,18 +64,18 @@ if (typedEl) {
   setTimeout(type, 900);
 }
 
-/* MARQUEE */
+/* ===== MARQUEE ===== */
 var track = document.getElementById('marquee');
 if (track) {
-  var items = ['SIEM MONITORING','THREAT DETECTION','VAPT','INCIDENT RESPONSE','MITRE ATT&CK','WIRESHARK','WAZU','KALI LINUX','BURP SUITE','PYTHON','CTF PLAYER','TRYHACKME'];
+  var items = ['SIEM MONITORING','THREAT DETECTION','VAPT','INCIDENT RESPONSE','MITRE ATT&CK','WIRESHARK','WAZUH','KALI LINUX','BURP SUITE','PYTHON','CTF PLAYER','TRYHACKME'];
   track.innerHTML = (items.map(function (i) { return '<span>◆</span><b>' + i + '</b>'; }).join('')).repeat(2);
 }
 
-/* SCROLL REVEAL */
+/* ===== SCROLL REVEAL ===== */
 if ('IntersectionObserver' in window) {
   var obs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) e.target.classList.add('visible');
+      if (e.isIntering) e.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
@@ -81,16 +83,18 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
 }
 
-/* SIGIL PARALLAX ON SCROLL */
-window.addEventListener('scroll', function () {
-  var y = window.scrollY;
-  var s1 = document.querySelector('.s1');
-  var s2 = document.querySelector('.s2');
-  if (s1) s1.style.marginTop = (y * 0.08) + 'px';
-  if (s2) s2.style.marginTop = (y * -0.06) + 'px';
-}, { passive: true });
+/* ===== SIGIL PARALLAX (desktop only) ===== */
+if (!isTouch) {
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    var s1 = document.querySelector('.s1');
+    var s2 = document.querySelector('.s2');
+    if (s1) s1.style.marginTop = (y * 0.08) + 'px';
+    if (s2) s2.style.marginTop = (y * -0.06) + 'px';
+  }, { passive: true });
+}
 
-/* RANDOM GLITCH FLASH ON NAME */
+/* ===== RANDOM GLITCH FLASH ON NAME ===== */
 var nameEl = document.querySelector('.name');
 setInterval(function () {
   if (!nameEl) return;
@@ -101,7 +105,8 @@ setInterval(function () {
     setTimeout(function () { nameEl.style.textShadow = ''; }, 70);
   }, 140);
 }, 6000);
-/* MOBILE BURGER MENU */
+
+/* ===== MOBILE BURGER MENU ===== */
 var burger = document.getElementById('burger');
 var navmenu = document.getElementById('navmenu');
 if (burger && navmenu) {
@@ -116,16 +121,3 @@ if (burger && navmenu) {
     });
   });
 }
-
-/* disable heavy parallax on touch devices */
-/* SIGIL PARALLAX ON SCROLL (desktop only) */
-if (!('ontouchstart' in window)) {
-  window.addEventListener('scroll', function () {
-    var y = window.scrollY;
-    var s1 = document.querySelector('.s1');
-    var s2 = document.querySelector('.s2');
-    if (s1) s1.style.marginTop = (y * 0.08) + 'px';
-    if (s2) s2.style.marginTop = (y * -0.06) + 'px';
-  }, { passive: true });
-}
-
