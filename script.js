@@ -141,7 +141,7 @@ if ('IntersectionObserver' in window) {
 (function () {
   var body = document.getElementById('term-body');
   if (!body) return;
-  var PROMPT = 'arjun@soc-lab:~$ ';
+  var PROMPT = 'psarjun@soc-lab:~$ ';
   function esc(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
