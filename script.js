@@ -1,7 +1,6 @@
-// mark that JS is running (enables reveal-hiding)
 document.documentElement.classList.add('js');
 
-/* ===== MATRIX RAIN */
+/* MATRIX RAIN */
 var canvas = document.getElementById('matrix');
 if (canvas) {
   var ctx = canvas.getContext('2d');
@@ -30,7 +29,7 @@ if (canvas) {
   }, 70);
 }
 
-/* ===== TYPEWRITER ===== */
+/* TYPEWRITER */
 var typedEl = document.getElementById('typed');
 if (typedEl) {
   var lines = [
@@ -41,28 +40,28 @@ if (typedEl) {
   var li = 0, ci = 0;
   function type() {
     if (li >= lines.length) {
-      typedEl.innerHTML += ' <span classcaret"></span>';
+      typedEl.innerHTML += ' <span class="caret"></span>';
       return;
     }
     typedEl.innerHTML = lines.slice(0, li).join('<br>') + (li ? '<br>' : '') + lines[li].slice(0, ci);
     if (ci < lines[li].length) { ci++; setTimeout(type, 22); }
-    else { li++; ci = 0; setTimeout, 320); }
+    else { li++; ci = 0; setTimeout(type, 320); }
   }
- ();
+  type();
 }
 
-/* ===== MARQUEE ===== */
+/* MARQUEE */
 var track = document.getElementById('marquee');
 if (track) {
-  var items = ['SIEM MONITORING','THREAT DETECTION','VAPT','INCIDENT RESPONSE','MITRE ATT&CK','WIRESHARK','WAZUH','KALI LINUX','BURP SUITE','PYTHON','F PLAYER','TRYHACKME'];
+  var items = ['SIEM MONITORING','THREAT DETECTION','VAPT','INCIDENT RESPONSE','MITRE ATT&CK','WIRESHARK','WAZUH','KALI LINUX','BURP SUITE','PYTHON','CTF PLAYER','TRYHACKME'];
   track.innerHTML = (items.map(function (i) { return '<span>◆</span><b>' + i + '</b>'; }).join('')).repeat(2);
 }
 
-/* ===== SCROLL REVEAL ===== */
+/* SCROLL REVEAL */
 if ('IntersectionObserver' in window) {
   var obs = new IntersectionObserver(function (entries) {
- entries.forEach(function (e) {
-      (e.isIntersecting) e.target.classList.add('visible');
+    entries.forEach(function (e) {
+      if (e.isIntersecting) e.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
