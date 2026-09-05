@@ -5,6 +5,8 @@ body{background:var(--bg);color:#e8e8e8;font-family:'Space Grotesk',sans-serif;o
 a{color:inherit;text-decoration:none}
 ::selection{background:#fff;color:#000}
 body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0 1px,transparent 1px 3px);pointer-events:none;z-index:9998}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinRev{to{transform:rotate(-360deg)}}
 
 /* BG */
 #matrix{position:fixed;inset:0;z-index:-3;opacity:.12}
