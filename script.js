@@ -77,3 +77,8 @@ if ('IntersectionObserver' in window) {
 } else {
   document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
 }
+/* ENSURE PAGE ALWAYS LOADS FROM TOP, THEN PLAY INTRO */
+window.addEventListener('beforeunload', function () {
+  window.scrollTo(0, 0);
+});
+
