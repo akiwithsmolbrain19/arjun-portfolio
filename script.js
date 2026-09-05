@@ -47,7 +47,7 @@ if (canvas) {
 var typedEl = document.getElementById('typed');
 if (typedEl) {
   var lines = [
-    '> whoami — Arjun P S, ECE Graduate turnedsecurity Analyst',
+    '> whoami — Arjun P S, ECE Graduate turned Cybersecurity Analyst',
     '> skills — SIEM · Threat Detection · VAPT · Network Analysis',
     '> status — Open to SOC / Security Analyst roles_'
   ];
@@ -75,7 +75,7 @@ if (track) {
 if ('IntersectionObserver' in window) {
   var obs = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntering) e.target.classList.add('visible');
+      if (e.isIntersecting) e.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
