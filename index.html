@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arjun P S | Cybersecurity Analyst</title>
+<meta name="description" content="Portfolio of Arjun P S — Aspiring Cybersecurity Analyst | SOC Operations | Threat Detection | VAPT">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a0e14;
+    --bg2: #111722;
+    --accent: #00ff9c;
+    --accent-dim: #0f3d2c;
+    --text: #d8e0ea;
+    --muted: #898a8;
+    --card: #141c2b;
+    --border: #1e2a3d;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; background: rgba(10,14,20,.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index: 100; }
+  nav .container { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+  .logo { font-weight: bold; color: var(--accent); font-family: 'Courier New', monospace; }
+  .logo span { color: var(--text); }
+  nav ul { display: flex; gap: 24px; list-style: none; }
+  nav ul a { color: var(--muted); font-size: 14px; transition: color .2s; }
+  nav ul a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero { padding: 100px 0 80px; text-align: left; }
+  .hero .terminal { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 28px; font-family: 'Courier New', monospace; max-width: 720px; }
+  .terminal .bar { display: flex; gap: 8px; margin-bottom: 18px; }
+  .terminal .bar i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  .term-line { font-size: 15px; }
+  .prompt { color: var(--accent); }
+  .hero h1 { font-size: 42px; margin-top: 30px; }
+  .hero h2 { font-size: 20px; color: var(--muted); font-weight: 400; margin-bottom: 20px; }
+  .hero p { max-width: 680px; color: var(--muted); margin-bottom: 24px; }
+  .btn { display: inline-block; padding: 12px 28px; border: 1px solid var(--accent); border-radius: 6px; margin: 8px 12px 0 0; font-weight: 600; transition: all .2s; }
+  .btn:hover { background: var(--accent); color: var(--bg); }
+  .btn.ghost { border-color: var(--border); color: var(--text); }
+  .btn.ghost:hover { border-color: var(--accent); background: transparent; color: var(--accent); }
+
+  /* SECTIONS */
+  section { padding: 70px 0; border-top: 1px solid var(--border); }
+  section h2 { font-size: 26px; margin-bottom: 34px; }
+  section h2 .hash { color: var(--accent); }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 22px; }
+  .skill-card h3 { color: var(--accent); font-size: 15px; margin-bottom: 12px; }
+  .skill-card p { color: var(--muted); font-size: 14px; }
+
+  /* PROJECTS */
+  .project { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 26px; margin-bottom: 20px; transition: border-color .2s; }
+  .project:hover { border-color: var(--accent); }
+  .project .tags { margin: 10px 0; }
+  .tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-size: 12px; padding: 3px 10px; border-radius: 20px; margin: 3px 5px 3px 0; }
+  .project ul { color: var(--muted); font-size: 14px; padding-left: 20px; }
+  .project .date { color: var(--muted); font-size: 13px; float: right; }
+
+  /* TIMELINE */
+  .item { padding: 18px 0 18px 24px; border-left: 2px solid var(--accent-dim); position: relative; }
+  .item::before { content: ''; position: absolute; left: -7px; top: 26px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; }
+  .item h3 { font-size: 16px; }
+  .item .meta { color: var(--muted); font-size: 13px; margin: 4px 0 8px; }
+  .item p { color: var(--muted); font-size: 14px; }
+
+  /* CONTACT */
+  .contact-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 32px; text-align: center; }
+  .contact-box p { color: var(--muted); margin-bottom: 20px; }
+  .contact-links a { margin: 0 14px; font-weight: 600; }
+
+  footer { text-align: center; padding: 30px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+    .hero h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="logo">arjun<span>@sec:~$</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certs">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero container">
+  <div class="terminal">
+    <div class="bar">
+      <i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>
+    </div>
+    <div class="term-line"><span class="prompt">arjun@sec:~$</span> whoami</div>
+    <div class="term-line">Arjun P S — Aspiring Cybersecurity Analyst</div>
+    <div class="term-line"><span class="prompt">arjun@sec:~$</span> cat focus.txt</div>
+    <div class="term-line">SOC Operations | Threat Detection | VAPT | Incident Response</div>
+  </div>
+  <h1>Hi, I'm Arjun 👋</h1>
+  <h2>ECE Graduate (RSET Kakkanad) → Cybersecurity Analyst</h2>
+  <p>Hands-on experience with SIEM monitoring (Wazuh, Splunk), threat detection mapped to MITRE ATT&CK,
+  network analysis (Wireshark, tcpdump), and VAPT labs. CTF participant and published patent co-inventor,
+  actively building toward a blue-team role in Security Operations.</p>
+  <a class="btn" href="#contact">Get In Touch</a>
+  <a class="btn ghost" href="#projects">View Projects ↓</a>
+</header>
+
+<section id="skills">
+  <div class="container">
+    <h2><span class="hash">#</span> Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><h3>Security Assessment</h3><p>VAPT, vulnerability assessment, basic pentesting, website & wireless attacks, Burp Suite, Kali Linux</p></div>
+      <div class="skill-card"><h3>Threat Detection</h3><p>Wazuh, Sysmon, Splunk, SIEM monitoring, incident response, IOC analysis, MITRE ATT&CK</p></div>
+      <div class="skill-card"><h3>Network & Systems</h3><p>Linux, Windows, Wireshark, tcpdump, CLI, log analysis</p></div>
+      <div class="skill-card"><h3>Programming</h3><p>Python, C/C++, JavaScript, SQL</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2><span class="hash">#</span> Projects</h2>
+
+    <div class="project">
+      <span class="date">May 2026</span>
+      <h3>🔒 SOC Analyst Home Lab</h3>
+      <div class="tags"><span class="tag">Wazuh</span><span class="tag">Sysmon</span><span class="tag">Kali Linux</span><span class="tag">MITRE ATT&CK</span></div>
+      <ul>
+        <li>Built a Windows-based SOC lab using Wazuh SIEM, Sysmon, and Kali Linux with centralized endpoint logging.</li>
+        <li>Created detections for PowerShell abuse and brute-force activity mapped to MITRE ATT&CK.</li>
+        <li>Performed alert triage, log analysis, and incident investigations.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <span class="date">Mar 2026</span>
+      <h3>⚙️ Embedded RTOS Priority Inversion Simulator</h3>
+      <div class="tags"><span class="tag">C</span><span class="tag">POSIX Threads</span><span class="tag">WSL2</span></div>
+      <ul>
+        <li>Engineered a C-based RTOS simulator implementing Priority Inheritance (PIP) and Priority Ceiling (PCP) protocols to resolve unbounded priority inversion.</li>
+        <li>Reduced high-priority task latency from 758 ms → 405 ms (PIP) and 354 ms (PCP) while preventing deadlock.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <span class="date">Jul 2025 – Mar 2026</span>
+      <h3>🤟 Senti-Sign: Multi-Modal Sign Language & Emotion Translator</h3>
+      <div class="tags"><span class="tag">Deep Learning</span><span class="tag">ResNet</span><span class="tag">BiLSTM</span><span class="tag">FLAN-T5</span><span class="tag">Patented</span></div>
+      <ul>
+        <li>Real-time webcam application for sign language translation and emotion recognition using ResNet, BiLSTM/MLP, and FLAN-T5 with TTS output.</li>
+        <li>Co-inventor of published patent (Application No. 202541127307).</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <span class="date">Jan – Apr 2025</span>
+      <h3>🚜 Agricultural Monitoring Rover</h3>
+      <div class="tags"><span class="tag">Embedded</span><span class="tag">GPS</span><span class="tag">Sensors</span></div>
+      <ul>
+        <li>Reduced manual field inspection time by 60% through automated sensor data collection.</li>
+        <li>92% obstacle detection accuracy (HC-SR04) and GPS tracking with ±3 m accuracy.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <h2><span class="hash">#</span> Experience & CTF</h2>
+    <div class="item">
+      <h3>z0d1ak CTF Qualifiers — Team ASTRA</h3>
+      <div class="meta">Aug 2026 · Ranked #143 of 1,253 participants</div>
+      <p>Solved 8 challenges across Cryptography (5), Binary Exploitation, Forensics, and Miscellaneous categories.</p>
+    </div>
+    <div class="item">
+      <h3>Embedded Systems Training — Keltron Knowledge Centre</h3>
+      <div class="meta">Jul 2024</div>
+      <p>Trained in embedded systems, Arduino, and hardware sensors; designed and verified system logic for 3 Proteus simulations.</p>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="container">
+    <h2><span class="hash">#</span> Education & Certifications</h2>
+    <div class="item">
+      <h3>B.Tech — Electronics & Communication Engineering</h3>
+      <div class="meta">Rajagiri School of Engineering & Technology, Kochi · 2022 – 2026 · CGPA: 6.69/10</div>
+    </div>
+    <div class="item">
+      <h3>Google Cybersecurity Professional Certificate</h3>
+      <div class="meta">Feb 2026</div>
+      <p>Python, Linux, SQL, SIEM tools, IDS, risk identification and mitigation.</p>
+    </div>
+    <div class="item">
+      <h3>Certified Cyber Security Analyst (CSA) — ICT Academy of Kerala</h3>
+      <div class="meta">In Progress · Jun – Oct 2026</div>
+      <p>SOC workflows, threat detection, incident response, ethical hacking, website & wireless attacks.</p>
+    </div>
+    <div class="item">
+      <h3>TryHackMe SOC Level 1</h3>
+      <div class="meta">In Progress</div>
+      <p>Alert triage, SIEM/EDR/SOAR, IOC analysis, cyber defence frameworks.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2><span class="hash">#</span> Contact</h2>
+    <div class="contact-box">
+      <p>Open to entry-level SOC Analyst / Cybersecurity roles. Let's connect!</p>
+      <div class="contact-links">
+        <a href="mailto:peringhatarjun@gmail.com">📧 Email</a>
+        <a href="https://linkedin.com/in/p-s-arjun" target="_blank">💼 LinkedIn</a>
+        <a href="tel:+918078892743">📱 Phone</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Built by Arjun P S · Thrissur, India</footer>
+
+</body>
+</html>
