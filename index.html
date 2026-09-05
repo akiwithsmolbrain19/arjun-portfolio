@@ -89,6 +89,28 @@
     <div class="sec-head reveal"><span class="num mono">02</span><h2>PROJECTS</h2><div class="rule"></div></div>
 
     <article class="proj reveal">
+      <div class="proj-top"><h3>NETWATCH — NETWORK THREAT DETECTION &amp; PCAP ANALYSIS</h3><span class="date mono">SEP 2026</span></div>
+      <div class="tags mono"><span>PYTHON</span><span>TSHARK</span><span>PCAP</span><span>MITRE ATT&amp;CK</span></div>
+      <ul>
+        <li>Defensive detector that parses PCAPs via tshark (stdlib-only, zero runtime pip deps), extracts per-source features, and runs 8 independent heuristic rules — port scans, host discovery, DNS anomalies, HTTP recon, beaconing, suspicious ports, floods.</li>
+        <li>Scores, correlates multi-rule hosts, and emits console/JSON/HTML analyst reports with evidence, MITRE mappings, FP notes, and validation steps — plus a SQLite case workflow (open → investigating → closed / false_positive).</li>
+        <li>32-test pytest suite (positives, benign negatives, threshold boundaries, jitter-vs-beacon) against synthetic TEST-NET lab captures.</li>
+      </ul>
+      <p class="seal mono"><a href="https://github.com/akiwithsmolbrain19/netwatch" target="_blank">GITHUB ↗ netwatch</a></p>
+    </article>
+
+    <article class="proj reveal">
+      <div class="proj-top"><h3>SENTINEL HOUND — LOG THREAT DETECTION &amp; SOC TRIAGE</h3><span class="date mono">SEP 2026</span></div>
+      <div class="tags mono"><span>PYTHON</span><span>SIEM</span><span>MITRE ATT&amp;CK</span><span>SQLITE</span></div>
+      <ul>
+        <li>Local-first toolkit turning Linux auth.log and nginx access.log into ranked, explainable findings — 6 rules (SSH brute-force, success-after-fails, web scanners, exploit probes, high-404, IOC match) with MITRE technique IDs.</li>
+        <li>IOC blocklist, trusted-IP allowlist, sliding time windows, SQLite case store with localhost review UI, and console/JSON/HTML reporters. Zero third-party dependencies.</li>
+        <li>37-test stdlib unittest suite (parsers, thresholds, time windows, allowlist, FP negatives, DB, reporters, CLI) on sanitized synthetic logs.</li>
+      </ul>
+      <p class="seal mono"><a href="https://github.com/akiwithsmolbrain19/sentinel-hound" target="_blank">GITHUB ↗ sentinel-hound</a></p>
+    </article>
+
+    <article class="proj reveal">
       <div class="proj-top"><h3>SOC ANALYST HOME LAB</h3><span class="date mono">MAY 2026</span></div>
       <div class="tags mono"><span>WAZUH</span><span>SYSMON</span><span>KALI LINUX</span><span>MITRE ATT&amp;CK</span></div>
       <ul>
