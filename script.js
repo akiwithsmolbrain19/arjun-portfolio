@@ -1,5 +1,14 @@
 document.documentElement.classList.add('js');
 
+/* force start at top on load */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+window.addEventListener('load', function () {
+  window.scrollTo(0, 0);
+});
+
 /* ===== THEME — paper by default, ink on toggle ===== */
 (function () {
   var root = document.documentElement;
