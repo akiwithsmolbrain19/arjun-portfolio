@@ -191,3 +191,93 @@ nav { animation-delay:.1s; }
 .clink:hover { background:#fff; color:#000; border-color:#fff; box-shadow:0 0 24px rgba(255,255,255,.25); }
 
 footer { border-top:1px solid var(--line); padding:28px 0; text-align:center; font-size:10px; letter-spacing:2px; color:var(--faint); }
+/* ================= MOBILE & TABLET ================= */
+
+/* smooth touch scrolling + no accidental horizontal scroll */
+html { -webkit-text-size-adjust: 100%; }
+body { -webkit-tap-highlight-color: transparent; }
+
+/* tablet: breathe more, tame sigils */
+@media (max-width: 1024px) {
+  .sec-sigil { width: 220px; height: 220px; opacity: .06; }
+  .s1 { width: 280px; }
+  .s2 { width: 200px; }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 22px; }
+  section { padding: 72px 0; }
+
+  /* hero fills screen nicely */
+  .hero { min-height: 92vh; }
+  .tagline { font-size: 11px; letter-spacing: 3px; }
+  .hero-sub { font-size: 13px; min-height: 90px; }
+
+  /* stack CTA full-width-ish */
+  .cta { gap: 10px; }
+  .btn { padding: 13px 24px; flex: 1; text-align: center; min-width: 150px; }
+
+  /* project cards */
+  .proj { padding: 24px 20px; }
+  .proj-top { flex-direction: column; gap: 4px; }
+  .proj li { font-size: 13.5px; }
+
+  /* skills grid: 2-col on tablets → 1-col handled by auto-fit */
+  .card { padding: 24px 20px; }
+
+  /* contact */
+  .links { flex-direction: column; align-items: stretch; max-width: 320px; margin-left: auto; margin-right: auto; }
+  .clink { text-align: center; padding: 15px 20px; }
+}
+
+@media (max-width: 680px) {
+  /* hamburger nav */
+  nav .nav-inner { height: 58px; }
+  nav ul {
+    display: none;
+    position: absolute; top: 58px; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: rgba(5,5,5,.97);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(12px);
+  }
+  nav ul.open { display: flex; }
+  nav ul li { border-top: 1px solid var(--line); }
+  nav ul a { display: block; padding: 16px 24px; font-size: 12px; }
+  .burger {
+    display: flex; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 8px;
+  }
+  .burger span { width: 22px; height: 1.5px; background: #fff; transition: transform .3s, opacity .3s; }
+  .burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* heavy effects toned down for performance */
+  #matrix { opacity: .05; }
+  .fsigil { opacity: .08; }
+  .s3, .s4 { display: none; }
+  .sec-sigil { width: 160px; height: 160px; opacity: .05; right: -50px; top: 30px; }
+
+  /* name fits small screens */
+  .name { font-size: clamp(44px, 15vw, 80px); letter-spacing: -1px; }
+  .hero-sub { margin-top: 20px; }
+
+  /* marquee slower so it's readable */
+  .marquee-track { animation-duration: 38s; font-size: 10px; }
+
+  /* reduce glow (looks muddy on small screens) */
+  .name { filter: drop-shadow(0 0 14px rgba(255,255,255,.12)); }
+  .sec-head h2, .contact-big { filter: drop-shadow(0 0 10px rgba(255,255,255,.08)); }
+}
+
+/* respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* hide custom cursor artifacts on touch — already handled, but safe */
+@media (hover: none) {
+  .proj:hover, .card:hover { box-shadow: none; }
+}
