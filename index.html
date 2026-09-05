@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARJUN P S // CYBERSECURITY</title>
 <meta name="description" content="Arjun P S — Aspiring Cybersecurity Analyst | SOC | Threat Detection | VAPT">
@@ -12,99 +12,142 @@
 :root {
   --bg: #050505;
   --panel: #0c0c0c;
-  --chrome-1: #ffffff;
-  --chrome-2: #a8a8a8;
-  --chrome-3: #4a4a4a;
-  --accent: #e8e8e8;
-  --line: #1e1e1e;
+  --line: #1e1ee;
   --glitch: #9efff0;
 }
 
 html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
-  color: var(--accent);
+  color: #e8e8e8;
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
+  cursor: none;
 }
+a, button { cursor: none; }
 ::selection { background: #fff; color: #000; }
 
-/* ---- SCANLINE OVERLAY ---- */
+/* ===== CUSTOM CURSOR ===== */
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 100000;
+  transform: translate(-50%,-50%);
+}
+.cursor-dot {
+  width: 6px; height: 6px; background: #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,.8);
+}
+.cursor-ring {
+  width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.5);
+  border-radius: 50%;
+  transition: width .2s, height .2s, border-color .2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.cursor-ring::before, .cursor-ring::after {
+  content: ''; position: absolute; background: rgba(255,255,255,.6);
+}
+.cursor-ring::before { width: 9px; height: 1px; }
+.cursor-ring::after { width: 1px; height: 9px; }
+.cursor-ring.hovering { width: 56px; height: 56px; border-color: #fff; }
+.cursor-label {
+  position: fixed; pointer-events: none; z-index: 100000;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px;
+  color: #fff; opacity: 0; transform: translate(18px, 18px);
+  transition: opacity .2s;
+}
+.cursor-label.show { opacity: 1; }
+@media (hover: none) { .cursor-dot, .cursor-ring, .cursor-label { display: none; } body { cursor: auto; } a { cursor: pointer; } }
+
+/* ===== PRELOADER ===== */
+#boot {
+  position: fixed; inset: 0; background: #030303; z-index: 99999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  transition: opacity .8s, visibility .8s;
+}
+#boot.done { opacity: 0; visibility: hidden; }
+.boot-sigil { position: relative; width: 140px; height: 140px; margin-bottom: 34px; }
+.boot-sigil svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sigil-spin { animation: spin 6s linear infinite; }
+.sigil-spin-rev { animation: spinRev 9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); }@keyframes spinRev { to { transform: rotate(-360deg); } }
+.boot-text { font-size: 12px; letter-spacing: 4px; color: #888; min-height: 18px; }
+.boot-bar { width: 220px; height: 2px; background: #222; margin-top: 22px; position: relative; overflow: hidden }
+.boot-bar::after {
+  content: ''; position: absolute; inset: 0; background: #fff;
+  transform-origin: left; animation: bootFill 2.6s ease forwards;
+}
+@keyframes bootFill { from { transform: scaleX(0); } to { transform: scaleX(1 } }
+
+/* ===== SIGIL SVGs (shared defs) ===== */
+.sigil { position: absolute; pointer-events: none; z-index: 0; opacity: .5; }
+.sigil svg { width: 100%; height: 100%; overflow: visible; }
+
+/* ===== SCANLINES ===== */
 body::after {
-  content: '';
-  position: fixed; inset: 0;
+  content: ''; position: fixed; inset: 0;
   background: repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 3px);
-  pointer-events: none; z-index: 9999;
+  pointer-events: none; z-index: 9998;
 }
 
-/* ---- NOISE + GRID BG ---- */
+/* ===== MATRIX RAIN ===== */
+#matrix {
+  position: fixed; inset: 0; z-index: -3; opacity: .12;
+}
+
+/* ===== GRID ===== */
 .bg-grid {
-  position: fixed; inset: 0; z-index: -2;
+  position: fixed; inset: 0; z-index -2;
   background-image: linear-gradient(var(--line) 1px, transparent 1px),
                     linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black transparent 75%);
   animation: gridDrift 20s linear infinite;
 }
 @keyframes gridDrift { to { background-position: 60px 60px, 60px 60px; } }
 
 a { color: inherit; text-decoration: none; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
-.mono { font-family: 'JetBrains Mono', monospace; }
+.mono { font-family 'JetBrains Mono', monospace; }
 
-/* ---- CHROME TEXT ---- */
+/* ===== CHROME TEXT ===== */
 .chrome {
   background: linear-gradient(180deg, #fff 0%, #c9c9c9 30%, #5a5a5a 50%, #e8e8e8 55%, #8f8f8f 75%, #fff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
-/* ---- NAV ---- */
+/* ===== NAV ===== */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(5,5,5,.75);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
+  background: rgba(5,5,5,.75); backdrop-filter: blur(14px);
+  border-bottom 1px solid var(--line);
 }
 nav .container { display: flex; justify-content: space-between; align-items: center; height: 64px; }
 .nav-logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; letter-spacing: 2px; }
 .nav-logo b { color: #fff; }
 nav ul { display: flex; gap: 34px; list-style: none; }
 nav ul a {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12; letter-spacing: 2px; color: #7a7a7a;
-  position: relative; transition: color .25s;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px;
+  color: #7a7a7a; position: relative; transition: color .25s;
 }
 nav ul a::before { content: '/ '; color: #fff; opacity: 0; transition: opacity .25s; }
 nav ul a:hover { color: #fff; }
 nav ul a:hover::before { opacity: 1; }
 
-/* ---- HERO ---- */
+/* ===== HERO ===== */
 .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 64px; }
-.hero-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px; letter-spacing: 5px; color: #6f6f6f; margin-bottom: 18px;
-}
+/* big rotating sigils behind hero */
+.hero-sigil-1 { width: 520px; height: 520px; top: 50%; right: -120px; transform: translateY(-50%); animation: spin 40s linear infinite; }
+.hero-sigil-2 { width: 340px; height: 340px; top: 50%; right: -20px; transform: translateY(-50%); animation: spinRev 28s linear infinite; }
+.hero-tag { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 5px; color: #6f6f6f; margin-bottom: 18px; }
 .hero-tag em { color: #fff; font-style: normal; }
-.hero h1 {
-  font-size: clamp(52px, 10vw, 120px);
-  font-weight: 700; letter-spacing: -3px; line-height: .95;
-  position: relative;
-}
+.hero h1 { font-size: clamp(52px, 10vw, 120px); font-weight: 700; letter-spacing: -3px; line-height: .95; position: relative; z-index: 1; }
 .hero h1 .glitch { position: relative; display: inline-block; }
 .hero h1 .glitch::before, .hero h1 .glitch::after {
-  content: attr(data-text);
-  position: absolute; top: 0; left: 0; width: 100%;
-  background: var(--bg);
-  clip-path: inset(50% 0 50% 0);
+  content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%;
+  background: var(--bg); clip-path: inset(50% 0 50% 0);
 }
-.hero h1 .glitch::before {
-  color: var(--glitch); animation: glitchA 3.4s infinite steps(1);
-}
-.hero h1 .glitch::after {
-  color: #fff; animation: glitchB 2.9s infinite steps(1);
-}
+.hero h1 .glitch::before { color: var(--glitch); animation: glitchA 3.4s infinite steps(1); }
+.hero h1 .glitch::after { color: #fff; animation: glitchB 2.s infinite steps(1); }
 @keyframes glitchA {
   0%, 93%, 100% { transform: none; clip-path: inset(100% 0 0 0); }
   94% { transform: translate(-6px, 2px); clip-path: inset(20% 0 40% 0); }
@@ -116,152 +159,162 @@ nav ul a:hover::before { opacity: 1; }
   91% { transform: translate(6px, -1px); clip-path: inset(70% 0 5% 0); }
   94% { transform: translate(-5px, 2px); clip-path: inset(30% 0 55% 0); }
 }
-.hero-sub {
-  margin-top: 26px; font-family: 'JetBrains Mono', monospace;
-  font-size: 15px; color: #9a9a9a; max-width: 640px; line-height: 1.8;
-}
+.hero-sub { margin-top: 26px; font-family: 'JetBrains Mono', monospace; font-size: 15px; color: #9a9a9a; max-width: 640px; line-height: 1.8; position: relative; z-index: 1; }
 .hero-sub .caret { display: inline-block; width: 10px; height: 1.1em; background: #fff; vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
-
-.hero-cta { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-cta { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; position: relative; z-index: 1; }
 .btn {
   font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 2px;
   padding: 15px 34px; border: 1px solid #333; color: #ddd;
   position: relative; overflow: hidden; transition: color .3s, border-color .3s;
+  display inline-block;
 }
 .btn span { position: relative; z-index: 1; }
-.btn::before {
-  content: ''; position: absolute; inset: 0;
-  background: #fff; transform: translateY(101%); transition: transform .3s cubic-bezier(.65,0,.35,1);
-}
+.btn::before { content: ''; position: absolute; inset: 0; background: #fff; transform: translateY(101%); transition: transform .3s cubic-bezier(.65,0,.35,1); }
 .btn:hover { color: #000; border-color: #fff; }
 .btn:hover::before { transform: translateY(0); }
 .btn.solid { background: #fff; color: #000; border-color: #fff; }
 .btn.solid::before { background: #000; }
 .btn.solid:hover { color: #fff; }
 
-/* ---- MARQUEE ---- */
-.marquee {
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-  overflow: hidden; padding: 14px 0; background: var(--panel);
+/* scroll indicator */
+.scroll-hint {
+  position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%);
+ -family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 4px; color: #555;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
+.scroll-hint .line { width: 1px; height: 44px;: linear-gradient(#fff, transparent); animation: pulseLine 2s ease infinite; }
+@keyframes pulseLine { 50% { opacity: .3; transform: scaleY(.6); } }
+
+/* ===== MARQUEE ===== */
+.marquee { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; padding: 14px 0; background: var(--panel); }
 .marquee-track {
-  display: flex; gap: 50px; width: max-content;
-  animation: scroll 22s linear infinite;
-  font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 3px; color: #666;
-  white-space: nowrap;
+  display: flex; gap: 50px; width: max-content; animation: scroll 22s linear infinite;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 3px; color: #666; white-space: nowrap;
 }
 .marquee-track b { color: #fff; font-weight: 400; }
 @keyframes scroll { to { transform: translateX(-50%); } }
 
-/* ---- SECTIONS ---- */
-section { padding: 110px 0; position: relative; }
+/* ===== SECTIONS ===== */
+section { padding: 110px 0; position: relative; overflow: hidden; }
 .sec-head { display: flex; align-items: baseline; gap: 20px; margin-bottom: 60px; }
 .sec-num { font-family: 'JetBrains Mono', monospace; color: #3d3d3d; font-size: 14px; }
-.sec-head h2 {
-  font-size: clamp(30px, 5vw, 52px); font-weight: 700; letter-spacing: -1px;
-}
+.sec-head h2 { font-size: clamp(30px, 5vw, 52px); font-weight: 700; letter-spacing: -1px; }
 .sec-line { flex: 1; height: 1px; background: linear-gradient(90deg, #333, transparent); }
 
-/* reveal animation */
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1); }
+/* section corner sigils */
+.sec-sigil { width: 220px; height: 220px; top: 40px; right: 20px; opacity: .18; animation: spin 60s linear infinite; }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .8 ease, transform .8s cubic-bezier(.22,1,.36,1); }
 .reveal.visible { opacity: 1; transform: none; }
 
-/* ---- SKILLS ---- */
-.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.skill {
-  background: var(--bg); padding: 34px 28px; position: relative; overflow: hidden;
-  transition: background .3s;
-}
-::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-  background: linear-gradient(90deg, #fff, transparent);
-  transform: scaleX(0); transform-origin: left; transition: transform .4s;
-}
+/* ===== SKILLS ===== */
+.skills { display: grid;-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1 solid var(--line); }
+.skill { background: var(--bg); padding: 34px 28px; position: relative; overflow: hidden; transition: background .3s; }
+.skill::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #fff, transparent); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
 .skill:hover { background: var(--panel); }
 .skill:hover::before { transform: scaleX(1); }
 .skill .idx { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3f3f3f; letter-spacing: 2px; }
-.skill h3 { font-size: 17px; margin: 14px 0 10px; letter-spacing: 1px; }
+ h3 { font-size: px; margin: 14px 0 10px; letter-spacing: 1px; }
 .skill p { font-size: 13.5px; color: #8a8a8a; line-height: 1.7; }
+/* mini sigil watermark per skill card */
+.skill .mini-sigil {
+  position: absolute; right: -30px; bottom: -30px; width: 110px; height: 110px;
+  opacity: .07; transition: opacity .4s, transform .6s;
+}
+.skill:hover .mini-sigil { opacity: .18; transform: rotate(90deg); }
 
-/* ---- PROJECTS ---- */
+/* ===== PROJECTS ===== */
 .proj {
-  border: 1px solid var(--line); background: var(--panel);
-  margin-bottom: 22px; padding: 34px;
-  position: relative; overflow: hidden;
-  transition: border-color .35s, transform .35s;
+  border: 1px solid var(--line); background: var(--panel); margin-bottom: px; padding: 34px;
+  position: relative; overflow: hidden; transition: border-color .35s, transform .35s;
 }
 .proj:hover { border-color: #555; transform: translateX(6px); }
-.proj-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-.proj h3 { font-size: 21px; letter-spacing: -.3px; }
-.proj h3 .icon { margin-right: 10px; }
+.proj .proj-sigil {
+  position: absolute; top: -60px; right: -60px; width: 200px; height: 200px;
+  opacity: 0; transition: opacity .5s; animation: spin 30s linear infinite;
+}
+.proj:hover .proj-sigil { opacity: .14; }
+.proj-top { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; flex-wrap: wrap; position: relative; }
+.proj h3 { font-size: 21px; letter-spacing: -.3; }
 .proj .date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5c5c5c; letter-spacing: 1px; }
 .tags { margin: 14px 0 16px; }
-.tag {
-  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  letter-spacing: 1px; color: #999; border: 1px solid #2a2a2a;
-  padding: 4px 12px; margin: 0 6px 6px 0; transition: all .25s;
-}
+.tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; color: #999; border: 1px solid #2a2a2a; padding: 4px 12px; margin: 0 6px 6px 0; transition: all .25s; }
 .proj:hover .tag { color: #ddd; border-color: #444; }
 .proj ul { list-style: none; }
 .proj li { color: #8f8f8f; font-size: 14px; line-height: 1.75; padding-left: 20px; position: relative; margin-bottom: 6px; }
 .proj li::before { content: '▸'; position: absolute; left: 0; color: #fff; }
 
-/* ---- TIMELINE ---- */
+/* ===== TIMELINE ===== */
 .tl { border-left: 1px solid var(--line); margin-left: 6px; }
 .tl-item { position: relative; padding: 0 0 44px 36px; }
 .tl-item:last-child { padding-bottom: 0; }
-.tl-item::before {
-  content: ''; position: absolute; left: -5px; top: 8px;
-  width: 9px; height: 9px; background: var(--bg); border: 1px solid #666;
-  transform: rotate(45deg); transition: background .3s, transform .3s;
-}
+.tl-item::before { content: ''; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; background: var(--bg); border: 1px solid #666; transform: rotate(45deg); transition: background .3s, transform .3s; }
 .tl-item:hover::before { background: #fff; transform: rotate(45deg) scale(1.3); }
 .tl-item h3 { font-size: 17px; }
 .tl-item h3 .hl { color: #fff; }
 .tl-meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5c5c5c; letter-spacing: 1px; margin: 6px 0 10px; }
 .tl-item p { color: #8a8a8a; font-size: 14px; line-height: 1.7; max-width: 720px; }
 
-/* ---- CONTACT ---- */
-.contact-wrap { text-align: center; }
-.contact-big {
-  font-size: clamp(40px, 8vw, 90px); font-weight: 700; letter-spacing: -2px; line-height: 1;
-  transition: letter-spacing .4s;
+/* ===== PATENT BADGE (sigil-style) ===== */
+.patent-seal {
+  display: inline-flex; align-items: center; gap: 12px;
+  border: 1px solid #3a3a3a; padding: 12px 20px; margin-top: 14px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2; color: #bbb;
 }
+.patent-seal .seal-sigil { width: 34px; height: 34px; animation: spin 12s linear infinite; flex-shrink: 0; }
+
+/* ===== CONTACT ===== */
+.contact-wrap { text-align: center; position: relative; }
+.contact-sigil { width: 400px; height:400px; left: 50%; top: 50%; transform: translate(-50%,-50%); opacity: .14; animation: spin 50s linear infinite; }
+.contact-tag { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 5px; color: #6f6f6f; margin-bottom: 18px; position: relative; }
+.contact-big { font-size: clamp(40px, 8vw, 90px); font-weight: 700; letter-spacing: -2px; line-height: 1; transition: letter-spacing .4s; position: relative; }
 .contact-big:hover { letter-spacing: 0px; }
-.contact-links { margin-top: 44px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
-.clink {
-  font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 2px;
-  border: 1px solid #2a2a2a; padding: 14px 30px; color: #bbb;
-  transition: all .25s;
-}
+.contact-links { margin-top: 44px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; position: relative; }
+.clink { font-family 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 2px; border: 1px solid #2a2a2a; padding: 14px 30px; color: #bbb; transition: all .25s; }
 .clink:hover { background: #fff; color: #000; border-color: #fff; }
 
-footer {
-  border-top: 1px solid var(--line); padding: 30px 0; text-align: center;
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: #4a4a4a;
-}
-
-/* cursor glow */
-.glow {
-  position: fixed; width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,.045), transparent 65%);
-  pointer-events: none; z-index: -1;
-  transform: translate(-50%, -50%);
-  transition: opacity .4s;
-}
+footer { border-top: 1px solid var(--line); padding: 30px 0; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; color: #4a4a4a; }
 
 @media (max-width: 640px) {
   nav ul { display: none; }
   .hero h1 { letter-spacing: -1px; }
+  .hero-sig-1, .hero-sigil-2 { opacity: .3; }
 }
 </style>
 </head>
 <body>
 
-<div class="bg-grid"></div>
-<div class="glow" id="glow"></div>
+<!-- ===== BOOT PRELOADER ===== -->
+<div id="boot">
+  <div class="-sigil">
+    <!-- outer ring -->
+    <svg class="sigil-spin" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="48" stroke="#fff" stroke-width="0.8" stroke-dasharray="10 4 2 4"/>
+      <circle cx="50" cy="50" r="42" stroke="#777" stroke-width="0.5"/>
+    </svg>
+    <!-- inner ring -->
+    <svg class="sigil-spin-rev" viewBox="0 0 100 100" fill="none">
+      <polygon points="50,12 84,68 16,68" stroke="#fff" stroke-width="0.7"/>
+      <polygon points="50,88 16,32 84,32" stroke="#aaa" stroke-width="0.7"/>
+      <circle cx="50" cy="50" r="18" stroke="#fff" stroke-width="0.8"/>
+    </svg>
+  </div>
+  <div class="boot-text" id="bootText">ESTABLISHING SECURE CONNECTION...</div>
+  <div class="boot-bar"></div>
+</div>
 
+<!-- ===== CUSTOM CURSOR ===== -->
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring"="cRing"></div>
+<div class="cursor-label" id="cLabel">[ ACCESS ]</div>
+
+<!-- ===== BACKGROUND FX ===== -->
+<canvas id="matrix"></canvas>
+<div class="bg-grid"></div>
+
+<!-- ===== NAV ===== -->
 <nav>
   <div class="container">
     <div class="nav-logo"><b>APS</b>//SEC</div>
@@ -275,50 +328,84 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <header class="hero container">
-  <div class="hero-tag mono">SYS.BOOT — <em>ASPIRING CYBERSECURITY ANALYST</em> — THRISSUR, IN</div>
+  <!-- rotating metallic sigils -->
+  <div class="sigil hero-sigil-1">
+    <svg viewBox="0 0 100 100" fill="none">
+      <defs>
+        <linearGradient id="metal1" x1="0" y1="0" x2="1" y2="">
+          <stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#666"/><stop offset="1" stop-color="#eee"/>
+        </linearGradient>
+      </defs>
+      <circle cx="50" cy="50" r="49" strokeurl(#metal1)" stroke-width="0.6" stroke-dasharray="12 5 3 5"/>
+      <circle cx="50" cy="50" r="44" stroke="url(#metal1)" stroke-width="0.4"/>
+      <polygon points="50,8 88,72 12,72" stroke="url(#metal1)" stroke-width="0.5"/>
+      <polygon points="50,92 12,28 88,28" stroke="url(#metal1)" stroke-width="0.5"/>
+      <circle cx="50" cy="50" r="24" stroke="url(#metal1)" stroke-width="0.6" stroke-dasharray="4 3"/>
+    </svg>
+  </div>
+  <div class="sigil hero-sigil-2">
+    <svg viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="48" stroke="#999" stroke-width="0.6" stroke-dasharray="2 4"/>
+      <polygon points="50,10 90,50 50,90 10,50" stroke="#ddd" stroke-width="0.6"/>
+      <circle cx="50" cy="50" r="14" stroke="#fff" stroke-width="0.7"/>
+    </svg>
+  </div>
+
+  <div class="hero-tag mono">SYS.BOOT — <em>ASPIRING CYBERSECURITY ANALYST</em> — THRISSUR, IN>
   <h1><span class="glitch chrome" data-text="ARJUN">ARJUN</span><br>P&nbsp;S</h1>
   <p class="hero-sub" id="typed"></p>
   <div class="hero-cta">
-    <a class="btn solid" href="#contact"><span>INITIATE CONTACT</span></a>
-    <a class="btn" href="#projects"><span>VIEW PROJECTS ↘</span></a>
+    <a class="btn solid" href="#contact" data-cursor="CONNECT"><span>INITIATE CONTACT</span></a>
+    <a class="btn" href="#projects" data-cursor="VIEW"><span> PROJECTS ↘</span></a>
   </div>
+  <div class="scroll-hint"><span>SCROLL</span><div class="line"></div></div>
 </header>
 
-<!-- MARQUEE -->
-<div class="marquee">
-  <div class="marquee-track" id="marquee"></div>
-</div>
+<!-- ===== MARQUEE ===== -->
+<div class="marquee"><div="marquee-track" id="marquee"></div>>
 
-<!-- SKILLS -->
+<!-- ===== SKILLS ===== -->
 <section id="skills">
+  <div class="sigil sec-sigil">
+    <svg viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="48" stroke="#fff" stroke-width="0.5" stroke-dasharray="8 4"/>
+      <circle cx="" cy="50" r="34" stroke="#aaa" stroke-width="0.4"/>
+      <polygon points="50,14 86,74 14,74" stroke="#fff" stroke-width="0.5"/>
+    </svg>
+  </div>
   <div class="container">
-    <div class="sec-head reveal">
-      <span class="sec-num">01</span>
-      <h2 class="chrome">CAPABILITIES</h2>
-      <div class="sec-line"></div>
-    </div>
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2 class="chrome">CAPABILITIES</h2><div class="sec-line"></div></div>
     <div class="skills reveal">
-      <div class="skill"><div class="idx">/SEC_01</div><h3>SECURITY ASSESSMENT</h3><p>VAPT · Vulnerability Assessment · Basic Pentesting · Website & Wireless Attacks · Burp Suite · Kali Linux</p></div>
-      <div class="skill"><div class="idx">/SEC_02</div><h3>THREAT DETECTION</h3><p>Wazuh · Sysmon · Splunk · SIEM Monitoring · Incident Response · IOC Analysis · MITRE ATT&CK</p></div>
-      <div class="skill"><div class="idx">/SEC_03</div><h3>NETWORK & SYSTEMS</h3><p>Linux · Windows · Wireshark · tcpdump · CLI · Log Analysis</p></div>
-      <div class="skill"><div class="idx">/SEC_04</div><h3>PROGRAMMING</h3><p>Python · C/C++ · JavaScript · SQL</p></div>
+      <div class="skill">
+        <div class="mini-sigil"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#fff" stroke-width="2"/><polygon points="50,12 86,74 14,74" stroke="#fff" stroke-width="2"/><polygon points="50,88 14,26 86,26" stroke="#fff" stroke-width="2"/></svg></div>
+        <div class="idx">/SEC_01</div><h3>SECURITY ASSESSMENT</h3><p>VAPT · Vulnerability Assessment · Basic Pentesting · Website & Wireless Attacks · Burp Suite · Kali Linux</p>
+      </div>
+      <div class="skill">
+        <div class="mini-sigil"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#fff" stroke-width="2"/><rect x="20" y="20" width="60" height="60" stroke="#fff" stroke="2" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="14" stroke="#fff" stroke-width="2"/></svg></div>
+        <div class="idx">/SEC_02</div><h3>THREAT DETECTION</h3><p>Wazuh · Sysmon · Splunk · SIEM Monitoring · Incident Response · IOC Analysis · MITRE ATT&CK</p>
+      </div>
+      <div class="skill">
+        <div class="mini-sigil"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#fff" stroke-width="2" stroke-dasharray="6 4"/><circle cx="50" cy="50" r="30" stroke="#fff" stroke-width="2"/><circle cx="50" cy="50" r="12" stroke="#fff" stroke-width="2"/></svg></div>
+        <div class="idx">/SEC_03</div><h3>NETWORK & SYSTEMS</h3><p>Linux · Windows · Wireshark · tcpdump · CLI · Log Analysis</p>
+      </div>
+      <div class="skill">
+        <div class="mini-sigil"><svg viewBox="0 0 100 100" fill="none"><polygon points="50,10 90,50 50,90 10,50" stroke="#fff" stroke-width="2"/><polygon points="50,26 74,50 50,74 26,50" stroke="#fff" stroke-width="2"/></svg></div>
+        <div class="idx">/SEC_04</div><h3>PROGRAMMING</h3><p>Python · C/C++ · JavaScript · SQL</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ===== PROJECTS ===== -->
 <section id="projects">
   <div class="container">
-    <div class="sec-head reveal">
-      <span class="sec-num">02</span>
-      <h2 class="chrome">PROJECTS</h2>
-      <div class="sec-line"></div>
-    </div>
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2 class="chrome">PROJECTS</h2><div class="sec-line"></div></div>
 
     <div class="proj reveal">
-      <div class="proj-top"><h3><span class="icon">⛨</span>SOC ANALYST HOME LAB</h3><span class="date">MAY 2026</span></div>
+      <div class="sigil proj-sigil"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" stroke="#fff" stroke-width="0.8" stroke-dasharray="10 5"/><polygon points="50,10 90,50 50,90 10,50" stroke="#fff" stroke-width="0.8"/></svg></div>
+      <div class="proj-top"><h3>⛨ SOC ANALYST HOME LAB</h3><span class="date">MAY 2026</span></div>
       <div class="tags"><span class="tag">WAZUH</span><span class="tag">SYSMON</span><span class="tag">KALI LINUX</span><span class="tag">MITRE ATT&CK</span></div>
       <ul>
         <li>Built a Windows-based SOC lab using Wazuh SIEM, Sysmon, and Kali Linux with centralized endpoint logging via Wazuh agents.</li>
@@ -328,8 +415,9 @@ footer {
     </div>
 
     <div class="proj reveal">
-      <div class="proj-top"><h3><span class="icon">⚙</span>EMBEDDED RTOS PRIORITY INVERSION SIMULATOR</h3><span class="date">MAR 2026</span></div>
-      <div class="tags"><span class="tag">C</span><span class="tag">POSIX THREADS</span><span class="tag">WSL2</span></div>
+      <div class="sigil proj-sigil"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" stroke="#fff" stroke-width="0.8"/><polygon points="50,12 84,68 16,68" stroke="#fff" stroke-width="0.8"/><polygon points="50,88 16,32 84,32" stroke="#fff" stroke-width="0.8"/></svg></div>
+      <div class="proj-top"><h3>⚙ EMBEDDED RTOS PRIORITY INVERSION SIMULATOR</h3><span class="date">MAR 2026</span></div>
+      <div class="tags"><span class="tagC</span><span class="tag">POSIX THREADS</span><span class="tag">WSL2</span></div>
       <ul>
         <li>Engineered a C-based RTOS simulator implementing Priority Inheritance (PIP) and Priority Ceiling (PCP) protocols to resolve unbounded priority inversion.</li>
         <li>Reduced high-priority task latency from 758 ms → 405 ms (PIP) and 354 ms (PCP) while preventing deadlock.</li>
@@ -337,17 +425,22 @@ footer {
     </div>
 
     <div class="proj reveal">
-      <div class="proj-top"><h3><span class="icon">✦</span>SENTI-SIGN — SIGN LANGUAGE & EMOTION TRANSLATOR</h3><span class="date">JUL 2025 – MAR 2026</span></div>
-      <div class="tags"><span class="tag">RESNET</span><span class="tag">BILSTM</span><span class="tag">FLAN-T5</span><span class="tag">PATENT PUBLISHED</span></div>
+      <div class="sigil proj-sigil"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" stroke="#fff" stroke-width="0.8" stroke-dasharray="4 3"/><circle cx="50" cy="50" r="32" stroke="#fff" stroke-width="0.8"/><polygon points="50,18 82,50 50,82 18,50" stroke="#fff" stroke-width="0.8"/></svg></div>
+      <div class="proj-top"><h3>✦ SENTI-SIGN — SIGN LANGUAGE & EMOTION TRANSLATOR</h3><span class="date">JUL 2025 – MAR 2026</span></div>
+      <div class="tags"><span class="tag">RESNET</span><span class="tag">BILSTM</span><span class="tag">FLAN-T5</span><span class="tag">ENT PUBLISHED</span></div>
       <ul>
         <li>Real-time webcam application for sign language translation and emotion recognition using ResNet, BiLSTM/MLP, FLAN-T5, and TTS output.</li>
-        <li>Co-inventor of published patent (Application No. 202541127307, IP India).</li>
       </ul>
+      <div class="patent-seal">
+        <div class="seal-sigil"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#fff" stroke-width="4" stroke-dasharray="14 6"/><circle cx="50" cy="50" r="28" stroke="#fff" stroke-width="4"/><polygon points="50,30 68,62 32,62" stroke="#fff" stroke-width="4"/></svg></div>
+        PATENT PUBLISHED · APPLICATION NO. 202541127307 · IP INDIA · JAN 2026
+      </div>
     </div>
 
     <div class="proj reveal">
-      <div class="proj-top"><h3><span class="icon">◈</span>AGRICULTURAL MONITORING ROVER</h3><span class="date">JAN – APR 2025</span></div>
-      <div class="tags"><span class="tag">EMBEDDED</span><span class="tag">GPS</span><span class="tag">SENSORS</span></div>
+ <div class="sigil proj-sigil"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" stroke="#fff" stroke-width="0.8"/><rect x="22" y="22" width="56" height="56" stroke="#fff" stroke-width="0.8" transform="rotate(45 50 50)"/></svg></div>
+      <div class="proj-top"><h3>◈ AGRICULTURAL MONITORING ROVER</h3><span class="date">JAN – APR 2025</span></div>
+            <div class="tags"><span class="tag">EMBEDDED</span><span class="tag">GPS</span><span class="tag">SENSORS</span></div>
       <ul>
         <li>Reduced manual field inspection time by 60% via automated sensor data collection.</li>
         <li>92% obstacle detection accuracy (HC-SR04) · GPS tracking ±3 m · DHT11 environmental monitoring ±2°C.</li>
@@ -356,17 +449,19 @@ footer {
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ===== EXPERIENCE ===== -->
 <section id="experience">
+  <div class="sigil sec-sigil">
+    <svg viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="48" stroke="#fff" stroke-width="0.5" stroke-dasharray="6 3"/>
+      <polygon points="50,10 90,50 50,90 10,50" stroke="#aaa" stroke-width="0.5"/>
+    </svg>
+  </div>
   <div class="container">
-    <div class="sec-head reveal">
-      <span class="sec-num">03</span>
-      <h2 class="chrome">EXPERIENCE // CTF</h2>
-      <div class="sec-line"></div>
-    </div>
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="chrome">EXPERIENCE // CTF</h2><div class="sec-line"></div></div>
     <div class="tl reveal">
       <div class="tl-item">
-        <h3><span class="hl">z0d1ak CTF QUALIFIERS</span> — TEAM ASTRA</h3>
+        <h3><span class="hl">zd1ak CTF QUALIFIERS</span> — TEAM ASTRA</h3>
         <div class="tl-meta">AUG 2026 · RANK #143 / 1,253</div>
         <p>Solved 8 challenges across Cryptography (5), Binary Exploitation, Forensics, and Miscellaneous — demonstrating practical offensive-security problem solving.</p>
       </div>
@@ -379,14 +474,10 @@ footer {
   </div>
 </section>
 
-<!-- CERTS -->
+<!-- ===== CERTS ===== -->
 <section id="certs">
   <div class="container">
-    <div class="sec-head reveal">
-      <span class="sec-num">04</span>
-      <h2 class="chrome">EDUCATION // CERTS</h2>
-      <div class="sec-line"></div>
-    </div>
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="chrome">EDUCATION // CERTS</h2><div class="sec-line"></div</div>
     <div class="tl reveal">
       <div class="tl-item">
         <h3><span class="hl">B.TECH — ELECTRONICS & COMMUNICATION ENGINEERING</span></h3>
@@ -411,64 +502,182 @@ footer {
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ===== CONTACT ===== -->
 <section id="contact">
   <div class="container contact-wrap reveal">
-    <div class="hero-tag mono">// OPEN TO SOC ANALYST & ENTRY-LEVEL CYBERSECURITY ROLES</div>
+    <div class="sigil contact-sigil">
+      <svg viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="49" stroke="#fff" stroke-width="0.4" stroke-dasharray="12 5 3 5"/>
+        <circle cx="50" cy="50" r="40" stroke="#888" stroke-width="0.4"/>
+        <polygon points="50,8 88,72 12,72" stroke="#fff" stroke-width="0.4"/>
+        <polygon points="50,92 12,28 88,28" stroke="#aaa" stroke-width="0.4"/>
+        <circle cx="50" cy="50" r="20" stroke="#fff" stroke-width="0.5" stroke-dasharray="4 3"/>
+      </svg>
+    </div>
+    <div class="contact-tag mono">// OPEN TO SOC ANALYST & ENTRY-LEVEL CYBERSECURITY ROLES</div>
     <h2 class="contact-big chrome">LET'S CONNECT</h2>
     <div class="contact-links">
-      <a class="clink" href="mailto:peringhatarjun@gmail.com">EMAIL ↗</a>
-      <a class="clink" href="https://linkedin.com/in/p-s-arjun" target="_blank">LINKEDIN ↗</a>
-      <a class="clink" href="tel:+918078892743">PHONE ↗</a>
+      <a class="clink" href="mailto:peringhatarjun@gmail.com" data-cursor="MAIL">EMAIL ↗</a>
+      <a class="clink" href="https://linkedin.com/in/p-s-arjun" target="_blank" data-cursor="OPEN">LINKEDIN ↗</a>
+      <a class="clink" href="tel:+918078892743" data-cursor="CALL">PHONE ↗</a>
     </div>
   </div>
 </section>
 
-<footer>© 2026 ARJUN P S — THRISSUR, INDIA — <span class="mono">SECURE BY DESIGN</span></footer>
+<footer>© 2026 ARJUN P S — THRISS, INDIA — <span class="mono">SECURE BY DESIGN</span></footer>
 
 <script>
-// ---- typewriter ----
+/* ================= BOOT SEQUENCE ================= */
+const bootMsgs = [
+  'ESTABLISHING SECURE CONNECTION...',
+  'BYPASSING FIREWALL... [OK]',
+  'LOADING SIGIL MATRIX... [OK]',
+  'DECRYPTING PROFILE... [OK]',
+  'ACCESS GRANTED — WELCOME'
+];
+const bootText = document.getElementById('bootText');
+const boot = document.getElementById('boot');
+let bmi = 0;
+const bootInt = setInterval(() => {
+  bmi++;
+  if (bmi < bootMsgs.length) bootText.textContent = bootMsgs[bmi];
+  else {
+    clearInterval(bootInt);
+    boot.classList.add('done');
+    document.body.style.overflow = '';
+  }
+}, 550);
+document.body.style.overflow = 'hidden'; // lock scroll during boot
+// safety: force-dismiss boot after 4.5s in case of lag
+setTimeout(() => boot.classList.add('done'), 4500);
+
+/* ================= CUSTOM CURSOR ================= */
+const cDot = document.getElementById('cDot');
+const cRing = document.getElementById('cRing');
+const cLabel = document.getElementById('cLabel');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cDot.style.left = mx + 'px';
+  cDot.style.top = my + 'px';
+  cLabel.style.left = mx + 'px';
+  cLabel.style.top = my + 'px';
+});
+(function ringFollow() {
+  rx += (mx - rx) * 0.15;
+  ry += (my - ry) * 0.15;
+  cRing.style.left = rx + 'px';
+  cRing.style.top = ry + 'px';
+  requestAnimationFrame(ringFollow);
+})();
+// hover states + cursor labels
+document.querySelectorAll('a, .btn, .proj, .skill, .tl-item').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cRing.classList.add('hovering');
+    const label = el.getAttribute('data-cursor');
+    if (label) { cLabel.textContent = '[ ' + label + ' ]'; cLabel.classList.add('show'); }
+  });
+  el.addEventListener('mouseleave', () => {
+    cRing.classList.remove('hovering');
+    cLabel.classList.remove('show');
+  });
+});
+
+/* ================= MATRIX RAIN ================= */
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+let cols, drops;
+const glyphs = 'アイウエオカキクケコサシスセソ0123456789ABCDEF#$%&*+-<>';
+function sizeMatrix() {
+  canvas.width = innerWidth;
+  canvas.height =Height;
+  cols = Math.floor(canvas.width / 16);
+  drops = Array(cols).fill(1);
+}
+sizeMatrix();
+addEventListener('resize', sizeMatrix);
+setInterval(() => {
+  ctx.fillStyle = 'rgba(5,5,5,0.08)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.font = '13px JetBrains Mono, monospace';
+  for (let i = 0; i < cols; i++) {
+    const ch = glyphs[Math.floor(Math.random() * glyphs.length)];
+    // silver-tinted rain instead of green
+    ctx.fillStyle = Math.random() > 0.975 ? '#ffffff' : 'rgba(200,200,200,0.85)';
+    ctx.fillText(ch, i * 16, drops[i] * 16);
+    if (drops[i] * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  }
+}, 60);
+
+/* ================= TYPEWRITER ================= */
 const lines = [
-  "> whoami — Arjun P S, ECE Graduate turned Cybersecurity Analyst",
-  "> skills — SIEM · Threat Detection · VAPT · Network Analysis",
-  "> status — Open to SOC / Security Analyst roles_"
+  '> whoami — Arjun P S, ECE Graduate turned Cybersecurity Analyst',
+  '> skills — SIEM · Threat Detection · VAPT · Network Analysis',
+  '> status — Open to SOC / Security Analyst roles_'
 ];
 const typedEl = document.getElementById('typed');
 let li = 0, ci = 0;
 function type() {
   if (li >= lines.length) { typedEl.innerHTML += ' <span class="caret"></span>'; return; }
   typedEl.innerHTML = lines.slice(0, li).join('<br>') + (li ? '<br>' : '') + lines[li].slice(0, ci);
-  if (ci < lines[li].length) { ci++; setTimeout(type, 22); }
-  else { li++; ci = 0; setTimeout(type, 350); }
+  if (ci < lines[li].length) { ci++; setTimeout(type, 20); }
+  else { li++; ci = 0; setTimeout(type, 320); }
 }
 type();
 
-// ---- marquee ----
+/* ================= MARQUEE ================= */
 const items = ['SIEM MONITORING','THREAT DETECTION','VAPT','INCIDENT RESPONSE','MITRE ATT&CK','WIRESHARK','WAZUH','KALI LINUX','BURP SUITE','PYTHON','CTF PLAYER','TRYHACKME'];
 const track = document.getElementById('marquee');
 track.innerHTML = (items.map(i => `<span>◆</span><b>${i}</b>`).join('')).repeat(2);
 
-// ---- scroll reveal ----
+/* ================= SCROLL REVEAL ================= */
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// ---- cursor glow ----
-const glow = document.getElementById('glow');
-document.addEventListener('mousemove', e => {
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-});
+/* ================= TEXT DECRYPT SCRAMBLE (section headings) ================= */
+const scrambleChars = '!<>-_\\/[]{}—=+*^?#________';
+function scramble(el) {
+  const original = el.dataset.text || el.textContent;
+  el.dataset.text = original;
+  let frame = 0;
+  const total = 24;
+  const iv = setInterval(() => {
+    let out = '';
+    for (let i = 0; i < original.length; i++) {
+      if (original[i] === ' ') { out += ' '; continue; }
+      if (frame / total * original.length > i) += original[i];
+      else out += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+    }
+    el.textContent = out;
+    frame++;
+    if (frame > total) { clearInterval(iv); el.textContent = original; }
+  }, 30);
+}
+// trigger scramble when a section heading enters view
+const obs2 = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      scramble(e.target.querySelector('h2'));
+      obs2.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.sec-head').forEach => obs2.observe(el));
 
-// ---- random glitch trigger on hero name ----
+/* ================= RANDOM GLITCH RE-TRIGGER ================= */
 const g = document.querySelector('.glitch');
 setInterval(() => {
   g.style.animation = 'none';
-  g.offsetHeight;
+  g.offsetHeight; // force reflow
   g.style.animation = '';
 }, 4000);
 </script>
 
 </body>
 </html>
+
+
+
