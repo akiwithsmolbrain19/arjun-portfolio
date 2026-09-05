@@ -182,7 +182,7 @@ if ('IntersectionObserver' in window) {
       print('<span class="dim">commands: whoami · skills · projects · netwatch [scan|benign|dns] · sentinel · nmap · contact · clear</span>');
     },
     whoami: function () {
-      print('arjun p s — ece graduate turned cybersecurity analyst. soc / detection engineering. thrissur, in.');
+      print('p s arjun — cybersecurity analyst. soc / detection engineering. thrissur, in.');
     },
     skills: function () {
       print('siem (wazuh) · threat detection · vapt · wireshark/tcpdump · python · mitre att&amp;ck');
