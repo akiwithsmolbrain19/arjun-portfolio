@@ -42,7 +42,7 @@ a { color:inherit; }
 
 .wrap { max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,64px); }
 .scene { padding:clamp(110px,16vh,200px) 0; position:relative; }
-.scene-dark { background:var(--ink); color:var(--paper); }
+.scene-dark { background:var(--ink); color:var(--paper); --paper:#F4F1EA; --ink:#141310; --ink-soft:#C6C1B4; --grey:#8A867C; }
 .scene-dark .label { color:var(--paper); opacity:.65; }
 .scene-dark .sec-title { color:var(--paper); }
 .scene-dark .outline { color:transparent; -webkit-text-stroke:1.5px rgba(244,241,234,.85); }
