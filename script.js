@@ -194,7 +194,13 @@ if ('IntersectionObserver' in window) {
       print('p s arjun — cybersecurity analyst. soc / detection engineering. thrissur, in.');
     },
     skills: function () {
-      print('siem (wazuh) · threat detection · vapt · wireshark/tcpdump · python · mitre att&amp;ck');
+      print('support: desktop · hardware · software · printers · remote · mobile flashing');
+      print('systems: windows · linux · installs · dual-boot · drivers · partitioning · assembly');
+      print('admin: ssh · permissions · users/groups · services · packages');
+      print('network: tcp/ip · dns · dhcp · subnetting · vlans · routing · nat · wifi · ethernet');
+      print('tools: wireshark · nmap · tcpdump · wazuh · sysmon · splunk · virtualbox');
+      print('secops: siem · detection · ir · vapt · burp · mitre att&amp;ck');
+      print('code: python · c/c++ · sql · javascript · cli');
     },
     projects: function () {
       print('<span class="ok">netwatch</span> — 8-rule pcap threat detector (32 tests)');
