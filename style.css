@@ -188,10 +188,11 @@ nav {
 .links { display:flex; gap:12px; flex-wrap:wrap; }
 .btn {
   font-family:var(--font-m); font-size:11px; letter-spacing:3px;
-  padding:17px 38px; border:1px solid rgba(244,241,234,.35); color:var(--paper);
+  padding:17px 38px; border:1px solid var(--line); color:var(--ink);
   transition:all .3s;
 }
 .btn:hover { border-color:var(--accent); box-shadow:0 0 26px rgba(47,75,255,.4); transform:translateY(-2px); }
+.scene-dark .btn { color:#F4F1EA; border-color:rgba(244,241,234,.35); }
 .btn.solid { background:var(--paper); color:var(--ink); border-color:var(--paper); }
 .btn.solid:hover { background:var(--accent); border-color:var(--accent); color:#fff; }
 .profile-btn { display:inline-flex; align-items:center; gap:12px; }
